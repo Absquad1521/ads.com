@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | ADS-ABN DIGITAL STORE</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body class="guarded">
+  <header>
+    <a href="index.html"><img src="ADS LOGO.png" class="logo" alt="ADS"></a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="history.html">History</a>
+      <a href="#" data-logout>Logout</a>
+    </nav>
+  </header>
+
+  <div class="main">
+    <h2 class="neon">Checkout</h2>
+    <div id="checkout-alert" class="alert"></div>
+
+    <form id="checkoutForm" class="form">
+      <label for="customerName">Customer Name</label>
+      <input id="customerName" class="input" type="text" required>
+
+      <label for="email">Email (logged user)</label>
+      <input id="email" class="input" type="email" required readonly>
+
+      <label for="password">Password (confirm)</label>
+      <div class="password-line">
+        <input id="password" class="input" type="password" required>
+        <button type="button" class="eye" data-toggle="password" data-target="password">👁</button>
+      </div>
+
+      <label for="ffid">FF ID or Username</label>
+      <input id="ffid" class="input" type="text" required>
+
+      <label for="orderName">Order Name</label>
+      <input id="orderName" class="input" type="text" placeholder="FF TOPUP / SOCIAL BOOST / APPS SUBSCRIPTION" required>
+
+      <label for="phone">Phone No</label>
+      <input id="phone" class="input" type="tel" required>
+
+      <label for="amount">Amount (LKR)</label>
+      <input id="amount" class="input" type="number" min="0" step="1" required>
+
+      <button class="btn" type="submit" style="width:100%">Submit Order</button>
+    </form>
+  </div>
+</body>
+</html>

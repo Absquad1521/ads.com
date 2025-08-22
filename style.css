@@ -1,0 +1,79 @@
+/* Neon Gradient Background for All Pages */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e, #ff0080, #7928ca, #2af598);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* Animate the background */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+:root{
+  --bg:#0a0d12;
+  --panel:#0f1420;
+  --cyan:#12f7ff;
+  --pink:#ff3fd0;
+  --purple:#7928ca;
+  --red:#ff3366;
+  --white:#e9f2ff;
+  --muted:#7f8da6;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 10% -10%, #111936 0%, transparent 60%), #0a0d12;color:var(--white);min-height:100%;font-family:Poppins,system-ui}
+a{color:var(--cyan);text-decoration:none}
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;gap:10px;background:linear-gradient(90deg,#0f1524,#0a0d12);position:sticky;top:0;z-index:10;border-bottom:1px solid #122}
+.logo{height:42px;filter:drop-shadow(0 0 12px rgba(18,247,255,.35))}
+.nav a{padding:8px 12px;border:1px solid #1f2b44;border-radius:999px;margin-left:8px}
+.nav a:hover{box-shadow:0 0 12px rgba(18,247,255,.35)}
+
+.main{max-width:980px;margin:30px auto;padding:0 16px}
+h1,h2{font-family:Orbitron;margin:12px 0 16px}
+h1.neon,h2.neon{text-shadow:0 0 22px rgba(18,247,255,.55),0 0 40px rgba(121,40,202,.45);color:var(--cyan)}
+
+.btn{display:inline-block;background:linear-gradient(90deg,var(--pink),var(--purple),var(--red));border:none;color:#fff;padding:12px 18px;border-radius:14px;font-weight:700;letter-spacing:.5px;cursor:pointer;box-shadow:0 0 18px rgba(255,64,200,.25);transition:transform .08s}
+.btn:active{transform:scale(.98)}
+
+/* Auth pages */
+.auth-wrap{max-width:420px;margin:40px auto;padding:22px;background:linear-gradient(180deg,#0f1524,#0a0d12);border:1px solid #1f2b44;border-radius:18px;box-shadow:0 0 28px rgba(18,247,255,.15)}
+.auth-logo{display:block;height:70px;margin:12px auto 6px;pointer-events:none;user-select:none}
+.input, select{width:100%;padding:12px 14px;border-radius:12px;background:#111828;border:1px solid #1f2b44;color:#e9f2ff;margin:8px 0 14px;outline:none}
+.input:focus{box-shadow:0 0 12px rgba(18,247,255,.35)}
+.password-line{position:relative}
+.eye{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:#0f1420;border:1px solid #1f2b44;border-radius:10px;padding:6px 8px;font-family:Orbitron;cursor:pointer}
+.eye.shown{background:#152035}
+
+/* Small card */
+.card{background:linear-gradient(180deg,#0f1524,#0a0d12);border:1px solid #1f2b44;border-radius:16px;padding:14px;margin:10px 0}
+.card-title{font-family:Orbitron;margin-bottom:8px;color:var(--cyan)}
+.card-row{display:flex;justify-content:space-between;color:var(--muted);padding:6px 0;border-bottom:1px dashed #1b2b44}
+.card-row:last-child{border-bottom:none}
+.muted{color:var(--muted)}
+
+/* Alerts */
+.alert{display:none;margin:0 0 12px;padding:12px;border-radius:12px;border:1px solid #23334e;background:#0f1628}
+.alert.ok{border-color:#0ad5d8;color:#a8faff;box-shadow:0 0 16px rgba(18,247,255,.25)}
+.alert.warn{border-color:#ffb02e;color:#ffe0a3;box-shadow:0 0 16px rgba(255,176,46,.2)}
+.alert.error{border-color:#ff3b6b;color:#ffd0db;box-shadow:0 0 16px rgba(255,59,107,.2)}
+
+/* Splash */
+.splash{display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center}
+.splash .big-logo{height:120px;margin-bottom:14px;pointer-events:none}
+.splash h1{font-family:Orbitron}
+.loader{width:78px;height:78px;border:4px solid rgba(18,247,255,.25);border-top-color:var(--cyan);border-radius:50%;margin:12px auto;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Forms on pages */
+.form{max-width:520px;margin:18px auto;padding:18px;background:linear-gradient(180deg,#0f1524,#0a0d12);border:1px solid #1f2b44;border-radius:18px}
+label{display:block;margin:6px 0 4px;color:#9fc2ff}
