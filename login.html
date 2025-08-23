@@ -25,5 +25,85 @@
         <a href="register.html">Register</a></p>
     </div>
   </div>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a40, #6a0dad, #ff007f, #ff3131);
+      color: white;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(0,0,0,0.6);
+    }
+
+    header img {
+      height: 60px;
+      cursor: pointer;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff007f;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-top: 30px;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    /* Buttons */
+    .toggle-btn {
+      margin: 15px auto;
+      display: block;
+      padding: 12px 20px;
+      width: 80%;
+      max-width: 500px;
+      background: linear-gradient(45deg, #ff007f, #6a0dad);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background: linear-gradient(45deg, #6a0dad, #ff007f);
+      transform: scale(1.03);
+    }
+  /* Hidden prize list */
+    .prize-list {
+      display: none;
+      margin: 15px auto;
+      width: 90%;
+      max-width: 700px;
+      text-align: left;
+      background: rgba(0,0,0,0.6);
+      padding: 15px;
+      border-radius: 12px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      white-space: pre-line;
+    }
+  </style>
 </body>
 </html>
