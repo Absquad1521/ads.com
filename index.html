@@ -1,45 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ADS-ABN DIGITAL STORE</title>
-
-  <!-- Bootstrap CSS (for navbar + mobile collapse) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Your custom styles -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADS-ABN DIGITAL STORE - Home</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-  /* Neon gradient background */
-:root{
-  --dark-blue: #0a0d12;
-  --purple: #6a0dad;
-  --pink: #ff007f;
-  --red: #ff3131;
-  --teal: #12f7ff;
-  --muted: rgba(255,255,255,0.08);
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a40, #6a0dad, #ff007f, #ff3131);
+      color: white;
+      min-height: 100vh;
+      text-align: center;
+    }
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  color:#fff;
-  background: linear-gradient(135deg, var(--dark-blue) 0%, #1a1a40 25%, var(--purple) 50%, var(--pink) 75%, var(--red) 100%);
-  background-attachment: fixed;
-  background-size: 300% 300%;
-  animation: bgShift 16s ease infinite;
-  -webkit-font-smoothing:antialiased;
-}
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(0,0,0,0.6);
+    }
 
-@keyframes bgShift{
-  0%{ background-position:0% 50% }
-  50%{ background-position:100% 50% }
-  100%{ background-position:0% 50% }
-}
-
+    header img {
+      height: 60px;
+      cursor: pointer;
+    }
 /* NAVBAR */
 .neon-navbar{
   background: rgba(0,0,0,0.45);
@@ -71,221 +58,193 @@ body{
 /* small logout button style */
 .btn-logout{ background: linear-gradient(90deg,var(--pink),var(--purple)); color:#fff; padding:6px 10px; border-radius:10px; }
 
-/* PAGE / HERO */
-.page{ padding: 28px 0 90px; min-height: calc(100vh - 120px) }
-.container{ max-width:1100px; margin:0 auto; padding:0 16px; }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-.hero{
-  text-align:center;
-  padding: 36px 12px;
-}
-.hero-title{
-  font-size: clamp(28px, 6vw, 48px);
-  margin: 8px 0 6px;
-  font-weight:800;
-  line-height:1.02;
-  text-shadow: 0 6px 40px rgba(18,247,255,0.05);
-  color: #fff;
-}
-.hero-sub{ color: rgba(255,255,255,0.9); margin-bottom:6px; font-size:1.05rem; }
-.hero-note{ color: rgba(18,247,255,0.9); margin: 10px 0 22px; font-weight:600 }
+    nav a:hover {
+      color: #ff007f;
+    }
 
-/* CTA Buttons - big neon */
-.ctas{ display:flex; flex-direction:column; gap:18px; align-items:center; max-width:760px; margin:20px auto; padding:0 12px; }
-.neon-btn{
-  width: 100%;
-  max-width: 680px;
-  padding: 18px 22px;
-  background: linear-gradient(90deg, rgba(255,77,179,0.95), rgba(168,107,255,0.95));
-  border-radius: 14px;
-  color: #fff;
-  font-weight:800;
-  font-size: 1.05rem;
-  letter-spacing: .6px;
-  border: 2px solid rgba(255,255,255,0.08);
-  box-shadow: 0 10px 36px rgba(168,107,255,0.18), 0 0 28px rgba(255,77,179,0.08);
-  transition: transform .12s ease, box-shadow .18s ease, filter .12s;
-}
-.neon-large{ padding:20px 24px; font-size:1.05rem; }
-.neon-btn:active{ transform: translateY(1px) scale(.995) }
-.neon-btn:hover{ filter:brightness(0); box-shadow: 0 10px 36px rgba(168,107,255,0.26), 0 0 30px rgba(255,77,179,0.12) }
+    h1 {
+      font-size: 2.3rem;
+      margin-top: 30px;
+    }
 
-/* Price container */
-.price-container{ max-width:820px; margin: 14px auto 0; padding: 0 12px; }
-.price-collapse{ margin-top: 14px; }
-.price-list{
-  display:block;
-  background: rgba(0,0,0,0.55);
-  border-radius: 12px;
-  padding: 18px;
-  color: #eaeefc;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
-  white-space: pre-wrap;
-  border: 1px solid rgba(255,255,255,0.05);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.02);
-  font-size: 0.95rem;
-  line-height:1.45;
-}
+    p {
+      font-size: 1.2rem;
+    }
 
-/* footer */
-.site-footer{ padding: 18px 0; margin-top: 36px; background: transparent; text-align:center; color: rgba(255,255,255,0.85) }
+    /* Buttons */
+    .toggle-btn {
+      margin: 15px auto;
+      display: block;
+      padding: 12px 20px;
+      width: 80%;
+      max-width: 500px;
+      background: linear-gradient(45deg, #ff007f, #6a0dad);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-/* responsive */
-@media (max-width: 992px){
-  .navbar-nav{ gap:8px }
-  .ctas{ gap:14px; }
-  .brand-text{ display:none }
-}
-@media (max-width: 600px){
-  .neon-btn{ font-size: .98rem; padding:14px 16px; max-width: 92% }
-  .brand-logo{ height:38px }
-  .hero-sub{ font-size: .98rem }
-}
+    .toggle-btn:hover {
+      background: linear-gradient(45deg, #6a0dad, #ff007f);
+      transform: scale(1.03);
+    }
+
+    /* Hidden prize list */
+    .prize-list {
+      display: none;
+      margin: 15px auto;
+      width: 90%;
+      max-width: 700px;
+      text-align: left;
+      background: rgba(0,0,0,0.6);
+      padding: 15px;
+      border-radius: 12px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      white-space: pre-line;
+    }
+
   </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8106862569435819"
+     crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark neon-navbar">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-        <img src="assets/ADS LOGO.png" alt="ADS-ABN" class="brand-logo">
-        <span class="brand-text">ADS-ABN DIGITAL STORE</span>
-      </a>
+  <!-- Header -->
+  <header>
+    <a href="index.html"><img src="ADS LOGO.png" alt="ADS Logo"></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="history.html">History</a>
+      <a href="login.html">Logout</a>
+    </nav>
+  </header>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
-              aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <!-- Main -->
+  <main>
+    <h1>Welcome to ADS-ABN DIGITAL STORE</h1>
+    <p>FF Topup • Social Boost • App Subscriptions — Fast and secure.</p>
+    <p>See Your Services Prizes In This Page</p>
+    <h5>And Go To Services Page On Top</h5>
 
-      <div class="collapse navbar-collapse justify-content-end" id="mainNav">
-        <ul class="navbar-nav gap-2">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout</a></li>
-          <li class="nav-item"><a class="nav-link" href="history.html">History</a></li>
-          <li class="nav-item"><a class="nav-link" href="terms.html">Terms & Conditions</a></li>
-          <li class="nav-item"><a class="nav-link" href="privacy.html">Privacy Policy</a></li>
-          <li class="nav-item"><a class="nav-link btn-logout" href="logout.html">Logout</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO / CALLS -->
-  <main class="page">
-    <section class="hero container">
-      <h1 class="hero-title">Welcome to ADS-ABN DIGITAL STORE</h1>
-      <p class="hero-sub">FF Topup • Social Boost • App Subscriptions — Fast and secure.</p>
-      <p class="hero-sub">See Your Services Prizes In This Page.</p>
-      <p>Go To Menu Button On Top And Click Services page.</p>
-
-      <div class="ctas">
-        <!-- Use Bootstrap collapse: each button toggles a collapse; JS below makes them behave like accordions -->
-        <button class="neon-btn neon-large" data-bs-toggle="collapse" data-bs-target="#prizeFF" aria-expanded="false" aria-controls="prizeFF">
-          FF TOPUP PRIZE LIST
-        </button>
-
-        <button class="neon-btn neon-large" data-bs-toggle="collapse" data-bs-target="#prizeSocial" aria-expanded="false" aria-controls="prizeSocial">
-          SOCIAL BOOST PRIZE LIST
-        </button>
-
-        <button class="neon-btn neon-large" data-bs-toggle="collapse" data-bs-target="#prizeApps" aria-expanded="false" aria-controls="prizeApps">
-          APPS SUBSCRIPTION PRIZE LIST
-        </button>
-      </div>
-
-      <!-- PRICE LISTS (collapsible) -->
-      <div class="price-container">
-        <div class="collapse price-collapse" id="prizeFF">
-<pre class="price-list">
-●ABN TOP UP CENTRE ‼️
+    <!-- Buttons -->
+    <button class="toggle-btn" onclick="toggleList('ff')">FF TOPUP PRIZE LIST</button>
+    <div id="ff" class="prize-list">
+      ●ABN TOP UP CENTRE ‼️
 
 Flash top up center
 price updated❗
 
 DIAMOND   R/PRICE    EZ/PRICE
-💎25     -   93/=    -   150/=
-💎100    -  330/=    -   380/=
-💎310    -  900/=    -   970/=
-💎520    - 1460/=    -  1500/=
-💎1060   - 2750/=    -  2820/=
-💎2180   - 5500/=    -  5570/=
-💎5600   -14000/=   - 14070/=
-💎11500  -28700/=   - 28770/=
+💎25   -   93/=   -   150/=
+💎100  -   330/=  -   380/=
+💎310  -   900/=  -   970/=
+💎520  -   1460/= -   1500/=
+💎1060 -   2750/= -   2820/=
+💎2180 -   5500/= -   5570/=
+💎5600 -   14000/= - 14070/=
+💎11500-   28700/= - 28770/=
 
 Membership Prices⬇️
-💳Weekly Lite - 110/=   -   170/=
-💳Weekly -     460/=       -   500/=
-💳Monthly -  2330/=      -  2400/=
+💳Weekly Lite - 110/= - 170/=
+💳Weekly - 460/= - 500/=
+💳Monthly - 2330/= - 2400/=
 
-Air Drop Prices⬇️
-Airdrop 📦 720/=
+Air Drop 📦 720/=
 
-Evo Access Prices⬇️
+Evo Access ⬇️
 🧿3 Days - 250/=
 🧿7 Days - 370/=
-🧿30 Days -920/=
+🧿30 Days - 920/=
 
 ⭕ Ez cash num :- 0777548834
 ⭕ Ez cash fee :- 50/=
-</pre>
-        </div>
 
-        <div class="collapse price-collapse" id="prizeSocial">
-<pre class="price-list">
+LIKES      R/PRICE    EZ/PRICE    DELIVERY
+👍100  - 30/= - 80/= - 1 day
+👍200  - 60/= - 120/= - 2 days
+👍500  - 150/= - 200/= - 5 days
+👍1000 - 300/= - 370/= - 10 days
+👍2000 - 500/= - 570/= - 20 days
+👍2500 - 700/= - 770/= - 25 days
+👍3000 - 800/= - 870/= - 30 days
+👍10000- 2180/= - 2250/= - 100 days
+
+LEVEL UP PASS ❗
+Level 6 — 160/=
+Level 10— 270/=
+Level 15— 270/=
+Level 20— 270/=
+Level 25— 270/=
+Level 30— 400/=
+
+TOPUP THE FUTURE NOW ⚡
+    </div>
+
+    <button class="toggle-btn" onclick="toggleList('social')">SOCIAL BOOST PRIZE LIST</button>
+    <div id="social" class="prize-list">
 ABN TOPUP CENTRE ‼️
 
 🤯 Social media Boost added 🦋❗
 
-YOUTUBE
-YOUTUBE SUBSCRIBERS — 500 — 700/=
-YOUTUBE SUBSCRIBERS — 1000 — 1300/=
-YOUTUBE SUBSCRIBERS — 1500 — 1900/=
-YOUTUBE SUBSCRIBERS — 2000 — 2500/=
+YOUTUBE SUBSCRIBERS
+500 — 700/=
+1000 — 1300/=
+1500 — 1900/=
+2000 — 2500/=
 
 YOUTUBE VIEWS (Sri Lanka)
 500 — 600/=
 1000 — 1100/=
 1500 — 1600/=
 2000 — 2100/=
-</pre>
-        </div>
+    </div>
 
-        <div class="collapse price-collapse" id="prizeApps">
-<pre class="price-list">
+    <button class="toggle-btn" onclick="toggleList('apps')">APPS SUBSCRIPTION PRIZE LIST</button>
+    <div id="apps" class="prize-list">
 ABN TOP UP CENTRE ‼️
 
 Editing Apps Subscription ❗
 
 CANVA
-Canva Pro 2years 📱   -  270/=
-Canva Pro Demo 📱     - 170/=
+Canva Pro 2 years 📱 - 270/=
+Canva Pro Demo 📱 - 170/=
 Canva Pro Lifetime 📱 - 570/=
 
 CHATGPT
-ChatGPT Plus 1 Month 📱- 670/=
-ChatGPT Plus 2 Month📱- 1170/=
-ChatGPT Plus 3 Month📱- 1770/=
-ChatGPT Plus 6 Month📱- 3470/=
-ChatGPT Plus 1 Year   📱- 6770/=
-</pre>
-        </div>
-      </div>
-    </section>
+ChatGPT Plus 1 Month 📱 - 670/=
+ChatGPT Plus 2 Months 📱 - 1170/=
+ChatGPT Plus 3 Months 📱 - 1770/=
+ChatGPT Plus 6 Months 📱 - 3470/=
+ChatGPT Plus 1 Year 📱 - 6770/=
+    </div>
+
   </main>
 
-  <!-- footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <small>© 2025 ADS-ABN DIGITAL STORE</small>
-    </div>
-  </footer>
+  <script>
+    function toggleList(id) {
+      var el = document.getElementById(id);
+      if (el.style.display === "block") {
+        el.style.display = "none";
+      } else {
+        el.style.display = "block";
+      }
+    }
+  </script>
 
-  <!-- Bootstrap bundle (includes Popper) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Your custom JS -->
-  <script src="assets/js/script.js"></script>
 </body>
-            </html>
+</html>
