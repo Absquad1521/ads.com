@@ -1,249 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="google-site-verification" content="v7shjZGyXsUrldfuTbRaTnO-m48USidVB2NFqnoO6Jk" />
-  <title>ADS-ABN DIGITAL STORE - Home</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a40, #6a0dad, #ff007f, #ff3131);
-      color: white;
-      min-height: 100vh;
-      text-align: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABN TOPUP CENTRE - SL</title>
+    <style>
+        :root {
+            --bg: #0a0118;
+            --purple: #6a00f4;
+            --pink: #ff00cc;
+            --blue: #00d4ff;
+            --glass: rgba(255, 255, 255, 0.07);
+        }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      background: rgba(0,0,0,0.6);
-    }
+        body {
+            background: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding-bottom: 50px;
+        }
 
-    header img {
-      height: 60px;
-      cursor: pointer;
-    }
-/* NAVBAR */
-.neon-navbar{
-  background: rgba(0,0,0,0.45);
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
-}
-.brand-logo{
-  height:46px;
-  width:auto;
-  filter: drop-shadow(0 0 14px rgba(255,77,179,0.3)) saturate(1.2);
-  border-radius:8px;
-}
-.brand-text{ font-weight:700; letter-spacing:0.4px; font-size:0.95rem; color:#fff; text-shadow:0 0 8px rgba(18,247,255,0.07) }
+        header {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(to bottom, #1a0033, var(--bg));
+            border-bottom: 2px solid var(--pink);
+        }
 
-/* nav links */
-.navbar-nav .nav-link{
-  color: rgba(255,255,255,0.95);
-  font-weight:700;
-  padding:8px 12px;
-  border-radius:8px;
-  transition: all .18s ease;
-}
-.navbar-nav .nav-link:hover{
-  color:#fff;
-  background: linear-gradient(90deg, rgba(255,77,179,0.12), rgba(168,107,255,0.08));
-  box-shadow: 0 8px 24px rgba(168,107,255,0.08), 0 0 12px rgba(255,77,179,0.06);
-  transform: translateY(-2px);
-}
-/* small logout button style */
-.btn-logout{ background: linear-gradient(90deg,var(--pink),var(--purple)); color:#fff; padding:6px 10px; border-radius:10px; }
+        h1 { margin: 0; color: var(--blue); letter-spacing: 2px; }
+        .sub { color: var(--pink); font-size: 0.8rem; font-weight: bold; }
 
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+        .container { max-width: 600px; margin: auto; padding: 15px; }
 
-    nav a:hover {
-      color: #ff007f;
-    }
+        /* Step Styles */
+        .step-card {
+            background: var(--glass);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
 
-    h1 {
-      font-size: 2.3rem;
-      margin-top: 30px;
-    }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
-    p {
-      font-size: 1.2rem;
-    }
+        .btn-opt {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--purple);
+            color: white;
+            padding: 15px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.3s;
+        }
 
-    /* Buttons */
-    .toggle-btn {
-      margin: 15px auto;
-      display: block;
-      padding: 12px 20px;
-      width: 80%;
-      max-width: 500px;
-      background: linear-gradient(45deg, #ff007f, #6a0dad);
-      color: white;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        .btn-opt:hover, .btn-opt.active {
+            background: var(--purple);
+            box-shadow: 0 0 15px var(--blue);
+            border-color: var(--blue);
+        }
 
-    .toggle-btn:hover {
-      background: linear-gradient(45deg, #6a0dad, #ff007f);
-      transform: scale(1.03);
-    }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--blue);
+            color: white;
+            border-radius: 5px;
+        }
 
-    /* Hidden prize list */
-    .prize-list {
-      display: none;
-      margin: 15px auto;
-      width: 90%;
-      max-width: 700px;
-      text-align: left;
-      background: rgba(0,0,0,0.6);
-      padding: 15px;
-      border-radius: 12px;
-      line-height: 1.6;
-      font-size: 0.95rem;
-      white-space: pre-line;
-    }
+        .hidden { display: none; }
 
-  </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8106862569435819"
-     crossorigin="anonymous"></script>
+        .bill-box {
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-family: monospace;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <a href="index.html"><img src="ADS LOGO.png" alt="ADS Logo"></a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="checkout.html">Checkout</a>
-      <a href="history.html">History</a>
-      <a href="login.html">Logout</a>
-    </nav>
-  </header>
+<header>
+    <h1>ABN TOPUP CENTRE</h1>
+    <div class="sub">TOPUP THE FEATURES NOW</div>
+</header>
 
-  <!-- Main -->
-  <main>
-    <h1>Welcome to ADS-ABN DIGITAL STORE</h1>
-    <p>FF Topup • Social Boost • App Subscriptions — Fast and secure.</p>
-    <p>See Your Services Prizes In This Page</p>
-    <h5>And Go To Services Page On Top</h5>
-
-    <!-- Buttons -->
-    <button class="toggle-btn" onclick="toggleList('ff')">FF TOPUP PRIZE LIST</button>
-    <div id="ff" class="prize-list">
-      ●ABN TOP UP CENTRE ‼️
-
-Flash top up center
-price updated❗
-
-DIAMOND   R/PRICE    EZ/PRICE
-💎25   -   93/=   -   150/=
-💎100  -   330/=  -   380/=
-💎310  -   900/=  -   970/=
-💎520  -   1460/= -   1500/=
-💎1060 -   2750/= -   2820/=
-💎2180 -   5500/= -   5570/=
-💎5600 -   14000/= - 14070/=
-💎11500-   28700/= - 28770/=
-
-Membership Prices⬇️
-💳Weekly Lite - 110/= - 170/=
-💳Weekly - 460/= - 500/=
-💳Monthly - 2330/= - 2400/=
-
-Air Drop 📦 720/=
-
-Evo Access ⬇️
-🧿3 Days - 250/=
-🧿7 Days - 370/=
-🧿30 Days - 920/=
-
-⭕ Ez cash num :- 0777548834
-⭕ Ez cash fee :- 50/=
-
-LIKES      R/PRICE    EZ/PRICE    DELIVERY
-👍100  - 30/= - 80/= - 1 day
-👍200  - 60/= - 120/= - 2 days
-👍500  - 150/= - 200/= - 5 days
-👍1000 - 300/= - 370/= - 10 days
-👍2000 - 500/= - 570/= - 20 days
-👍2500 - 700/= - 770/= - 25 days
-👍3000 - 800/= - 870/= - 30 days
-👍10000- 2180/= - 2250/= - 100 days
-
-LEVEL UP PASS ❗
-Level 6 — 160/=
-Level 10— 270/=
-Level 15— 270/=
-Level 20— 270/=
-Level 25— 270/=
-Level 30— 400/=
-
-TOPUP THE FUTURE NOW ⚡
+<div class="container">
+    
+    <div class="step-card">
+        <h3>1. Customer Details</h3>
+        <input type="text" id="cust-name" placeholder="Your Name">
+        <input type="text" id="cust-phone" placeholder="Contact No (e.g. 077...)">
+        <input type="email" id="cust-email" placeholder="Email Address">
     </div>
 
-    <button class="toggle-btn" onclick="toggleList('social')">SOCIAL BOOST PRIZE LIST</button>
-    <div id="social" class="prize-list">
-ABN TOPUP CENTRE ‼️
-
-🤯 Social media Boost added 🦋❗
-
-YOUTUBE SUBSCRIBERS
-500 — 700/=
-1000 — 1300/=
-1500 — 1900/=
-2000 — 2500/=
-
-YOUTUBE VIEWS (Sri Lanka)
-500 — 600/=
-1000 — 1100/=
-1500 — 1600/=
-2000 — 2100/=
+    <div class="step-card">
+        <h3>2. Select Game</h3>
+        <div class="grid">
+            <div class="btn-opt" onclick="selectGame('Free Fire')">FREE FIRE</div>
+            <div class="btn-opt" onclick="selectGame('PUBG')">PUBG</div>
+        </div>
     </div>
 
-    <button class="toggle-btn" onclick="toggleList('apps')">APPS SUBSCRIPTION PRIZE LIST</button>
-    <div id="apps" class="prize-list">
-ABN TOP UP CENTRE ‼️
-
-Editing Apps Subscription ❗
-
-CANVA
-Canva Pro 2 years 📱 - 270/=
-Canva Pro Demo 📱 - 170/=
-Canva Pro Lifetime 📱 - 570/=
-
-CHATGPT
-ChatGPT Plus 1 Month 📱 - 670/=
-ChatGPT Plus 2 Months 📱 - 1170/=
-ChatGPT Plus 3 Months 📱 - 1770/=
-ChatGPT Plus 6 Months 📱 - 3470/=
-ChatGPT Plus 1 Year 📱 - 6770/=
+    <div id="step-product" class="step-card hidden">
+        <h3>3. Select Category</h3>
+        <div class="grid">
+            <div class="btn-opt" onclick="selectCat('Memberships')">Memberships</div>
+            <div class="btn-opt" onclick="selectCat('Diamonds')">Diamonds</div>
+            <div class="btn-opt" onclick="selectCat('FF Likes')">FF Likes</div>
+            <div class="btn-opt" onclick="selectCat('Level Up Pass')">Level Up Pass</div>
+        </div>
     </div>
 
-  </main>
+    <div id="step-packages" class="step-card hidden">
+        <h3>4. Select Package</h3>
+        <div id="package-list" class="grid"></div>
+        
+        <div style="margin-top:20px;">
+            <label>Quantity (Count):</label>
+            <input type="number" id="item-count" value="1" min="1" onchange="updateBill()">
+        </div>
+    </div>
 
-  <script>
-    function toggleList(id) {
-      var el = document.getElementById(id);
-      if (el.style.display === "block") {
-        el.style.display = "none";
-      } else {
-        el.style.display = "block";
-      }
+    <div class="step-card">
+        <h3>5. Payment Method</h3>
+        <select id="pay-method" onchange="updateBill()">
+            <option value="EZCASH">EZCASH</option>
+            <option value="BANK PAYMENT">BANK PAYMENT</option>
+            <option value="CASH">CASH</option>
+        </select>
+    </div>
+
+    <div id="bill-preview" class="step-card hidden">
+        <h3>Order Summary (Bill)</h3>
+        <div class="bill-box" id="bill-text"></div>
+        <button class="whatsapp-btn" onclick="sendToWhatsApp()">SEND ORDER VIA WHATSAPP</button>
+    </div>
+
+</div>
+
+<script>
+    let order = { game: "", category: "", package: "", price: 0, total: 0 };
+
+    const prices = {
+        "Weekly Membership": 500,
+        "Weekly Lite Membership": 130,
+        "Monthly Membership": 2350,
+        "100 Diamonds": 350,
+        "Level Up Pass": 450,
+        "100 Likes": 150
+    };
+
+    function selectGame(game) {
+        order.game = game;
+        document.getElementById('step-product').classList.remove('hidden');
+        setActive(event);
     }
-  </script>
+
+    function selectCat(cat) {
+        order.category = cat;
+        const pkgDiv = document.getElementById('package-list');
+        pkgDiv.innerHTML = '';
+        document.getElementById('step-packages').classList.remove('hidden');
+
+        let options = [];
+        if(cat === 'Memberships') options = ["Weekly Membership", "Weekly Lite Membership", "Monthly Membership"];
+        else if(cat === 'Diamonds') options = ["100 Diamonds", "500 Diamonds"];
+        else options = [cat];
+
+        options.forEach(opt => {
+            let div = document.createElement('div');
+            div.className = 'btn-opt';
+            div.innerText = opt;
+            div.onclick = () => selectPkg(opt);
+            pkgDiv.appendChild(div);
+        });
+    }
+
+    function selectPkg(pkg) {
+        order.package = pkg;
+        order.price = prices[pkg] || 500;
+        updateBill();
+    }
+
+    function updateBill() {
+        const count = document.getElementById('item-count').value;
+        order.total = order.price * count;
+        
+        document.getElementById('bill-preview').classList.remove('hidden');
+        document.getElementById('bill-text').innerHTML = `
+            <b>ABN TOPUP CENTRE</b><br>
+            --------------------------<br>
+            Customer: ${document.getElementById('cust-name').value}<br>
+            Game: ${order.game}<br>
+            Item: ${order.package}<br>
+            Qty: ${count}<br>
+            Payment: ${document.getElementById('pay-method').value}<br>
+            --------------------------<br>
+            TOTAL: LKR ${order.total}.00
+        `;
+    }
+
+    function sendToWhatsApp() {
+        const name = document.getElementById('cust-name').value;
+        const phone = document.getElementById('cust-phone').value;
+        const email = document.getElementById('cust-email').value;
+        const method = document.getElementById('pay-method').value;
+        const count = document.getElementById('item-count').value;
+
+        if(!name || !phone) { alert("Please enter Name and Phone!"); return; }
+
+        let text = `*ABN TOPUP CENTRE ORDER*%0A` +
+                   `--------------------------%0A` +
+                   `*CUSTOMER DETAILS*%0A` +
+                   `Name: ${name}%0A` +
+                   `Phone: ${phone}%0A` +
+                   `Email: ${email}%0A%0A` +
+                   `*ORDER DETAILS*%0A` +
+                   `Game: ${order.game}%0A` +
+                   `Category: ${order.category}%0A` +
+                   `Package: ${order.package}%0A` +
+                   `Quantity: ${count}%0A` +
+                   `Method: ${method}%0A` +
+                   `--------------------------%0A` +
+                   `*TOTAL BILL: LKR ${order.total}.00*`;
+
+        window.open(`https://wa.me/94777990902?text=${text}`, '_blank');
+    }
+
+    function setActive(e) {
+        // Simple visual toggle for buttons
+    }
+</script>
 
 </body>
 </html>
