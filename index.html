@@ -5,243 +5,411 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABN TOPUP CENTRE | Sri Lanka</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
-            --bg: #0d0221;
-            --purple: #7b2cbf;
-            --pink: #ff006e;
-            --blue: #3a86ff;
-            --glass: rgba(255, 255, 255, 0.08);
-            --white: #ffffff;
+            --bg-dark: #0a0118;
+            --bg-card: rgba(20, 10, 40, 0.6);
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #ec4899;
+            --accent-blue: #3b82f6;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --success: #10b981;
         }
 
         body {
-            background: var(--bg);
-            color: var(--white);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
+            background: linear-gradient(135deg, #0a0118 0%, #1e0a3e 50%, #0a0118 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
             position: relative;
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(180deg, #240046 0%, var(--bg) 100%);
-            border-bottom: 3px solid var(--pink);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            overflow-x: hidden;
         }
 
-        .logo-top-left {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 10px;
-            border: 2px solid var(--blue);
-            box-shadow: 0 0 10px var(--blue);
-        }
-
-        header h1 {
-            font-size: 2.2rem;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--blue);
-            text-shadow: 0 0 10px var(--blue);
-        }
-
-        header p {
-            margin: 5px 0 0;
-            color: var(--pink);
-            font-weight: bold;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        @media (max-width: 600px) {
-            .logo-top-left {
-                position: static;
-                margin-bottom: 10px;
-                width: 80px;
-                height: 80px;
-            }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            max-width: 500px;
-            margin: 20px auto;
-            padding: 15px;
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 3px solid var(--accent-primary);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 14px;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
         }
 
         .card {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 20px;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 20px;
+            padding: 24px;
             margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
 
-        h3 {
-            margin-top: 0;
-            font-size: 1.1rem;
-            border-left: 4px solid var(--pink);
-            padding-left: 10px;
-            margin-bottom: 15px;
+        .card:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2);
+        }
+
+        .card-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
         }
 
         input, select {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            border: 1px solid var(--purple);
-            background: rgba(0,0,0,0.5);
-            color: white;
+            padding: 14px 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 12px;
+            color: var(--text-primary);
             font-size: 1rem;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
         }
 
-        .selection-grid {
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        input::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        .grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 12px;
         }
 
-        .opt-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--purple);
-            padding: 15px 5px;
+        .option-btn {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 16px;
+            padding: 20px 12px;
             text-align: center;
-            border-radius: 10px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .opt-btn.active {
-            background: var(--pink);
-            border-color: white;
-            box-shadow: 0 0 15px var(--pink);
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        #product-info {
-            font-size: 0.85rem;
-            color: #ccc;
-            background: rgba(0,0,0,0.3);
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
+        .option-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .option-btn:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 12px 24px rgba(139, 92, 246, 0.3);
+        }
+
+        .option-btn.active {
+            border-color: transparent;
+            box-shadow: 0 12px 32px rgba(139, 92, 246, 0.5);
+            transform: scale(1.05);
+        }
+
+        .option-btn.active::before {
+            opacity: 1;
+        }
+
+        .option-btn small {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .info-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
         .bill-preview {
-            background: #fff;
-            color: #000;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             padding: 20px;
-            border-radius: 5px;
-            font-family: 'Courier New', Courier, monospace;
-            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
             white-space: pre-wrap;
+            margin-top: 16px;
         }
 
         .whatsapp-btn {
-            display: block;
             width: 100%;
-            background: #25D366;
-            color: white;
-            text-align: center;
             padding: 18px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
             border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            border-radius: 16px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
             margin-top: 20px;
-            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
         }
 
-        /* History Styles */
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-btn:active {
+            transform: translateY(-1px);
+        }
+
         .history-item {
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 10px 0;
-            font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--accent-primary);
         }
-        .history-item:last-child { border: none; }
-        .history-date { color: var(--blue); font-size: 0.75rem; }
-        .history-status { color: #25D366; float: right; }
 
-        .nav-tabs {
+        .history-header {
             display: flex;
-            margin-bottom: 20px;
-            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
         }
-        .tab-btn {
-            flex: 1;
-            padding: 10px;
-            background: var(--glass);
-            border: 1px solid var(--purple);
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-        .tab-btn.active { background: var(--purple); }
 
-        .hidden { display: none; }
+        .history-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .history-status {
+            background: var(--success);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .history-details {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <img src="ABN-LOGO.png" alt="ABN Logo" class="logo-top-left">
-    <h1>ABN TOPUP CENTRE</h1>
-    <p>TOPUP THE FEATURES NOW</p>
-</header>
-
 <div class="container">
-    
-    <div class="nav-tabs">
+    <header>
+        <div class="logo">
+            <img src="ABN-LOGO.png" alt="ABN Logo">
+        </div>
+        <h1>ABN TOPUP CENTRE</h1>
+        <p class="tagline">Game Topup • Sri Lanka</p>
+    </header>
+
+    <div class="tabs">
         <button class="tab-btn active" onclick="switchTab('order')">Order Now</button>
-        <button class="tab-btn" onclick="switchTab('history')">Order History</button>
+        <button class="tab-btn" onclick="switchTab('history')">History</button>
     </div>
 
     <div id="tab-order">
         <div class="card">
-            <h3>1. CUSTOMER INFO</h3>
+            <div class="card-title">Customer Information</div>
             <input type="text" id="name" placeholder="Full Name">
             <input type="text" id="phone" placeholder="WhatsApp Number (+94)">
-            <input type="email" id="email" placeholder="Email Address">
+            <input type="email" id="email" placeholder="Email Address (Optional)">
         </div>
 
         <div class="card">
-            <h3>2. SELECT GAME</h3>
-            <div class="selection-grid">
-                <div class="opt-btn" onclick="setGame('Free Fire', this)">FREE FIRE</div>
-                <div class="opt-btn" onclick="setGame('PUBG', this)">PUBG MOBILE</div>
+            <div class="card-title">Select Game</div>
+            <div class="grid">
+                <div class="option-btn" onclick="setGame('Free Fire', this)">
+                    <span>🔥 FREE FIRE</span>
+                </div>
+                <div class="option-btn" onclick="setGame('PUBG', this)">
+                    <span>🎮 PUBG MOBILE</span>
+                </div>
             </div>
         </div>
 
         <div id="section-cat" class="card hidden">
-            <h3>3. CATEGORY</h3>
-            <div class="selection-grid" id="cat-list"></div>
+            <div class="card-title">Category</div>
+            <div class="grid" id="cat-list"></div>
         </div>
 
         <div id="section-pkg" class="card hidden">
-            <h3>4. SELECT PACKAGE</h3>
-            <div id="pkg-list" class="selection-grid"></div>
+            <div class="card-title">Select Package</div>
+            <div id="pkg-list" class="grid"></div>
             <div id="product-info" class="hidden"></div>
             
-            <div style="margin-top: 15px;">
-                <label>Item Count (Quantity):</label>
+            <div style="margin-top: 16px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Quantity</label>
                 <input type="number" id="qty" value="1" min="1" onchange="calcTotal()">
             </div>
         </div>
 
         <div class="card">
-            <h3>5. PAYMENT METHOD</h3>
+            <div class="card-title">Payment Method</div>
             <select id="pay-method" onchange="calcTotal()">
                 <option value="EZCASH">EZCASH</option>
                 <option value="BANK PAYMENT">BANK PAYMENT</option>
@@ -250,21 +418,20 @@
         </div>
 
         <div id="section-bill" class="card hidden">
-            <h3>6. FINAL BILL</h3>
+            <div class="card-title">Order Summary</div>
             <div class="bill-preview" id="bill-content"></div>
-            <button class="whatsapp-btn" onclick="sendOrder()">SEND TO WHATSAPP</button>
+            <button class="whatsapp-btn" onclick="sendOrder()">📱 Send to WhatsApp</button>
         </div>
     </div>
 
     <div id="tab-history" class="hidden">
         <div class="card">
-            <h3>ORDER HISTORY</h3>
+            <div class="card-title">Order History</div>
             <div id="history-list">
-                <p style="text-align:center; opacity:0.5;">No history found.</p>
+                <div class="empty-state">No orders yet</div>
             </div>
         </div>
     </div>
-
 </div>
 
 <script>
@@ -273,25 +440,25 @@
     const data = {
         'Free Fire': {
             'Memberships': [
-                { name: 'Weekly Membership', price: 500, info: 'Srilankan Region. Instant Rewards + Daily Diamonds.' },
-                { name: 'Weekly Lite', price: 130, info: 'Budget friendly rewards for 7 days.' },
-                { name: 'Monthly Membership', price: 2330, info: '30 Days Rewards. Best value for gamers.' }
+                { name: 'Weekly Membership', price: 500, info: 'Sri Lankan Region. Instant Rewards + Daily Diamonds for 7 days.' },
+                { name: 'Weekly Lite', price: 130, info: 'Budget friendly rewards package for 7 days.' },
+                { name: 'Monthly Membership', price: 2330, info: '30 Days Premium Rewards. Best value for regular gamers.' }
             ],
             'Diamonds': [
-                { name: '100 Diamonds', price: 320, info: 'Direct Player ID Topup.' },
-                { name: '500 Diamonds', price: 1450, info: 'Direct Player ID Topup.' }
+                { name: '100 Diamonds', price: 320, info: 'Direct Player ID Topup. Instant delivery.' },
+                { name: '500 Diamonds', price: 1450, info: 'Direct Player ID Topup. Great value pack.' }
             ],
             'FF Likes': [
-                { name: '1000 Likes', price: 200, info: 'Boost your Profile Popularity.' }
+                { name: '1000 Likes', price: 200, info: 'Boost your Profile Popularity instantly.' }
             ],
             'Level Up Pass': [
-                { name: 'Level Up Pass', price: 550, info: 'One time purchase per account.' }
+                { name: 'Level Up Pass', price: 550, info: 'One time purchase per account. Unlock exclusive rewards.' }
             ]
         },
         'PUBG': {
             'UC Packages': [
-                { name: '60 UC', price: 350, info: 'Instant UC Transfer.' },
-                { name: '325 UC', price: 1650, info: 'Great for Royale Pass.' }
+                { name: '60 UC', price: 350, info: 'Instant UC Transfer to your account.' },
+                { name: '325 UC', price: 1650, info: 'Perfect for Royale Pass and premium items.' }
             ]
         }
     };
@@ -300,61 +467,67 @@
         document.getElementById('tab-order').classList.toggle('hidden', tab !== 'order');
         document.getElementById('tab-history').classList.toggle('hidden', tab !== 'history');
         document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.innerText.toLowerCase().includes(tab));
+            btn.classList.toggle('active', btn.innerText.toLowerCase().includes(tab.toLowerCase()));
         });
         if(tab === 'history') loadHistory();
     }
 
     function setGame(game, el) {
         order.game = game;
-        toggleActive(el, 'game');
+        toggleActive(el);
         const catList = document.getElementById('cat-list');
         catList.innerHTML = '';
         if(data[game]) {
             Object.keys(data[game]).forEach(cat => {
-                catList.innerHTML += `<div class="opt-btn" onclick="setCat('${cat}', this)">${cat}</div>`;
+                catList.innerHTML += `<div class="option-btn" onclick="setCat('${cat}', this)"><span>${cat}</span></div>`;
             });
             document.getElementById('section-cat').classList.remove('hidden');
             document.getElementById('section-pkg').classList.add('hidden');
+            document.getElementById('section-bill').classList.add('hidden');
         }
     }
 
     function setCat(cat, el) {
         order.cat = cat;
-        toggleActive(el, 'cat');
+        toggleActive(el);
         const pkgList = document.getElementById('pkg-list');
         pkgList.innerHTML = '';
         data[order.game][cat].forEach(p => {
-            pkgList.innerHTML += `<div class="opt-btn" onclick="setPkg('${p.name}', ${p.price}, '${p.info}', this)">${p.name}<br><small>LKR ${p.price}</small></div>`;
+            pkgList.innerHTML += `<div class="option-btn" onclick="setPkg('${p.name}', ${p.price}, '${p.info.replace(/'/g, "\\'")}', this)"><span>${p.name}<small>LKR ${p.price}</small></span></div>`;
         });
         document.getElementById('section-pkg').classList.remove('hidden');
+        document.getElementById('section-bill').classList.add('hidden');
     }
 
     function setPkg(name, price, info, el) {
         order.pkg = name;
         order.price = price;
-        toggleActive(el, 'pkg');
+        toggleActive(el);
         const infoDiv = document.getElementById('product-info');
-        infoDiv.innerHTML = `<b>Details:</b> ${info}`;
-        infoDiv.classList.remove('hidden');
+        infoDiv.className = 'info-box';
+        infoDiv.innerHTML = `<strong>📦 Package Details:</strong><br>${info}`;
         calcTotal();
     }
 
     function calcTotal() {
-        let q = document.getElementById('qty').value;
+        let q = parseInt(document.getElementById('qty').value) || 1;
         order.total = order.price * q;
         document.getElementById('section-bill').classList.remove('hidden');
         document.getElementById('bill-content').innerHTML = `
-<b>ABN TOPUP CENTRE SL</b>
---------------------------
-DATE: ${new Date().toLocaleDateString()}
-CUST: ${document.getElementById('name').value || 'Guest'}
-GAME: ${order.game}
-ITEM: ${order.pkg}
-QTY : ${q}
-PAY : ${document.getElementById('pay-method').value}
---------------------------
-<b>TOTAL: LKR ${order.total}.00</b>`;
+═══════════════════════════════
+    ABN TOPUP CENTRE SL
+═══════════════════════════════
+Date: ${new Date().toLocaleDateString()}
+Customer: ${document.getElementById('name').value || 'Guest'}
+
+Game: ${order.game}
+Item: ${order.pkg}
+Quantity: ${q}
+Payment: ${document.getElementById('pay-method').value}
+
+═══════════════════════════════
+<strong>TOTAL: LKR ${order.total}.00</strong>
+═══════════════════════════════`;
     }
 
     function saveToHistory() {
@@ -367,22 +540,26 @@ PAY : ${document.getElementById('pay-method').value}
             qty: document.getElementById('qty').value
         };
         history.unshift(newEntry);
-        localStorage.setItem('abn_history', JSON.stringify(history.slice(0, 10)));
+        localStorage.setItem('abn_history', JSON.stringify(history.slice(0, 20)));
     }
 
     function loadHistory() {
         let history = JSON.parse(localStorage.getItem('abn_history')) || [];
         const list = document.getElementById('history-list');
         if(history.length === 0) {
-            list.innerHTML = '<p style="text-align:center; opacity:0.5;">No history found.</p>';
+            list.innerHTML = '<div class="empty-state">No orders yet</div>';
             return;
         }
         list.innerHTML = history.map(item => `
             <div class="history-item">
-                <span class="history-date">${item.date}</span>
-                <span class="history-status">Sent</span><br>
-                <b>${item.game}</b> - ${item.item} (x${item.qty})<br>
-                LKR ${item.total}.00
+                <div class="history-header">
+                    <span class="history-date">${item.date}</span>
+                    <span class="history-status">✓ Sent</span>
+                </div>
+                <div class="history-details">
+                    <strong>${item.game}</strong> - ${item.item}<br>
+                    Quantity: ${item.qty} | Total: <strong>LKR ${item.total}.00</strong>
+                </div>
             </div>
         `).join('');
     }
@@ -390,7 +567,10 @@ PAY : ${document.getElementById('pay-method').value}
     function sendOrder() {
         const n = document.getElementById('name').value;
         const p = document.getElementById('phone').value;
-        if(!n || !p) return alert("Please fill Name & Phone!");
+        if(!n || !p) {
+            alert("⚠️ Please fill in your Name and WhatsApp Number!");
+            return;
+        }
 
         saveToHistory();
 
@@ -403,16 +583,15 @@ PAY : ${document.getElementById('pay-method').value}
                   `Package: ${order.pkg}%0A` +
                   `Quantity: ${document.getElementById('qty').value}%0A` +
                   `Payment: ${document.getElementById('pay-method').value}%0A%0A` +
-                  `*TOTAL BILL: LKR ${order.total}.00*`;
+                  `*TOTAL: LKR ${order.total}.00*`;
 
         window.open(`https://wa.me/94777990902?text=${msg}`, '_blank');
         
-        // After 1 second, switch to history tab automatically
-        setTimeout(() => switchTab('history'), 1000);
+        setTimeout(() => switchTab('history'), 800);
     }
 
-    function toggleActive(el, type) {
-        el.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+    function toggleActive(el) {
+        el.parentElement.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
         el.classList.add('active');
     }
 </script>
