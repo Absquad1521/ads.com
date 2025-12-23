@@ -3,251 +3,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABN TOPUP CENTRE - SL</title>
+    <title>ABN TOPUP CENTRE | Sri Lanka</title>
     <style>
         :root {
-            --bg: #0a0118;
-            --purple: #6a00f4;
-            --pink: #ff00cc;
-            --blue: #00d4ff;
-            --glass: rgba(255, 255, 255, 0.07);
+            --bg: #0d0221;
+            --purple: #7b2cbf;
+            --pink: #ff006e;
+            --blue: #3a86ff;
+            --glass: rgba(255, 255, 255, 0.08);
+            --white: #ffffff;
         }
 
         body {
             background: var(--bg);
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
+            color: var(--white);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
-            padding-bottom: 50px;
+            padding: 0;
         }
 
         header {
+            position: relative;
             text-align: center;
-            padding: 30px;
-            background: linear-gradient(to bottom, #1a0033, var(--bg));
-            border-bottom: 2px solid var(--pink);
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #240046 0%, var(--bg) 100%);
+            border-bottom: 3px solid var(--pink);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        h1 { margin: 0; color: var(--blue); letter-spacing: 2px; }
-        .sub { color: var(--pink); font-size: 0.8rem; font-weight: bold; }
+        .logo-top-left {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid var(--blue);
+            box-shadow: 0 0 10px var(--blue);
+        }
 
-        .container { max-width: 600px; margin: auto; padding: 15px; }
+        header h1 {
+            font-size: 2.2rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--blue);
+            text-shadow: 0 0 10px var(--blue);
+        }
 
-        /* Step Styles */
-        .step-card {
+        header p {
+            margin: 5px 0 0;
+            color: var(--pink);
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 600px) {
+            .logo-top-left {
+                position: static;
+                margin-bottom: 10px;
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 15px;
+        }
+
+        .card {
             background: var(--glass);
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 20px;
             border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-        .btn-opt {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid var(--purple);
-            color: white;
-            padding: 15px 10px;
-            border-radius: 10px;
-            cursor: pointer;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .btn-opt:hover, .btn-opt.active {
-            background: var(--purple);
-            box-shadow: 0 0 15px var(--blue);
-            border-color: var(--blue);
+        h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-left: 4px solid var(--pink);
+            padding-left: 10px;
+            margin-bottom: 15px;
         }
 
         input, select {
             width: 100%;
             padding: 12px;
-            margin-top: 10px;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--blue);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--purple);
+            background: rgba(0,0,0,0.5);
             color: white;
-            border-radius: 5px;
+            font-size: 1rem;
         }
 
-        .hidden { display: none; }
+        .selection-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
 
-        .bill-box {
-            background: white;
-            color: black;
-            padding: 15px;
+        .opt-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--purple);
+            padding: 15px 5px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .opt-btn.active {
+            background: var(--pink);
+            border-color: white;
+            box-shadow: 0 0 15px var(--pink);
+        }
+
+        #product-info {
+            font-size: 0.85rem;
+            color: #ccc;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
             border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .bill-preview {
+            background: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
             margin-top: 15px;
-            font-family: monospace;
+            white-space: pre-wrap;
         }
 
         .whatsapp-btn {
+            display: block;
+            width: 100%;
             background: #25D366;
             color: white;
-            width: 100%;
+            text-align: center;
             padding: 18px;
             border: none;
             border-radius: 50px;
+            font-size: 1.2rem;
             font-weight: bold;
-            font-size: 1.1rem;
+            cursor: pointer;
             margin-top: 20px;
+            text-decoration: none;
+        }
+
+        /* History Styles */
+        .history-item {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+        .history-item:last-child { border: none; }
+        .history-date { color: var(--blue); font-size: 0.75rem; }
+        .history-status { color: #25D366; float: right; }
+
+        .nav-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            background: var(--glass);
+            border: 1px solid var(--purple);
+            color: white;
+            border-radius: 10px;
             cursor: pointer;
         }
+        .tab-btn.active { background: var(--purple); }
+
+        .hidden { display: none; }
     </style>
 </head>
 <body>
 
 <header>
+    <img src="ADS — ABN DIGITAL STORE 20251223_131548.jpg" alt="ABN Logo" class="logo-top-left">
     <h1>ABN TOPUP CENTRE</h1>
-    <div class="sub">TOPUP THE FEATURES NOW</div>
+    <p>TOPUP THE FEATURES NOW</p>
 </header>
 
 <div class="container">
     
-    <div class="step-card">
-        <h3>1. Customer Details</h3>
-        <input type="text" id="cust-name" placeholder="Your Name">
-        <input type="text" id="cust-phone" placeholder="Contact No (e.g. 077...)">
-        <input type="email" id="cust-email" placeholder="Email Address">
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('order')">Order Now</button>
+        <button class="tab-btn" onclick="switchTab('history')">Order History</button>
     </div>
 
-    <div class="step-card">
-        <h3>2. Select Game</h3>
-        <div class="grid">
-            <div class="btn-opt" onclick="selectGame('Free Fire')">FREE FIRE</div>
-            <div class="btn-opt" onclick="selectGame('PUBG')">PUBG</div>
+    <div id="tab-order">
+        <div class="card">
+            <h3>1. CUSTOMER INFO</h3>
+            <input type="text" id="name" placeholder="Full Name">
+            <input type="text" id="phone" placeholder="WhatsApp Number (+94)">
+            <input type="email" id="email" placeholder="Email Address">
+        </div>
+
+        <div class="card">
+            <h3>2. SELECT GAME</h3>
+            <div class="selection-grid">
+                <div class="opt-btn" onclick="setGame('Free Fire', this)">FREE FIRE</div>
+                <div class="opt-btn" onclick="setGame('PUBG', this)">PUBG MOBILE</div>
+            </div>
+        </div>
+
+        <div id="section-cat" class="card hidden">
+            <h3>3. CATEGORY</h3>
+            <div class="selection-grid" id="cat-list"></div>
+        </div>
+
+        <div id="section-pkg" class="card hidden">
+            <h3>4. SELECT PACKAGE</h3>
+            <div id="pkg-list" class="selection-grid"></div>
+            <div id="product-info" class="hidden"></div>
+            
+            <div style="margin-top: 15px;">
+                <label>Item Count (Quantity):</label>
+                <input type="number" id="qty" value="1" min="1" onchange="calcTotal()">
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>5. PAYMENT METHOD</h3>
+            <select id="pay-method" onchange="calcTotal()">
+                <option value="EZCASH">EZCASH</option>
+                <option value="BANK PAYMENT">BANK PAYMENT</option>
+                <option value="CASH">CASH</option>
+            </select>
+        </div>
+
+        <div id="section-bill" class="card hidden">
+            <h3>6. FINAL BILL</h3>
+            <div class="bill-preview" id="bill-content"></div>
+            <button class="whatsapp-btn" onclick="sendOrder()">SEND TO WHATSAPP</button>
         </div>
     </div>
 
-    <div id="step-product" class="step-card hidden">
-        <h3>3. Select Category</h3>
-        <div class="grid">
-            <div class="btn-opt" onclick="selectCat('Memberships')">Memberships</div>
-            <div class="btn-opt" onclick="selectCat('Diamonds')">Diamonds</div>
-            <div class="btn-opt" onclick="selectCat('FF Likes')">FF Likes</div>
-            <div class="btn-opt" onclick="selectCat('Level Up Pass')">Level Up Pass</div>
+    <div id="tab-history" class="hidden">
+        <div class="card">
+            <h3>ORDER HISTORY</h3>
+            <div id="history-list">
+                <p style="text-align:center; opacity:0.5;">No history found.</p>
+            </div>
         </div>
-    </div>
-
-    <div id="step-packages" class="step-card hidden">
-        <h3>4. Select Package</h3>
-        <div id="package-list" class="grid"></div>
-        
-        <div style="margin-top:20px;">
-            <label>Quantity (Count):</label>
-            <input type="number" id="item-count" value="1" min="1" onchange="updateBill()">
-        </div>
-    </div>
-
-    <div class="step-card">
-        <h3>5. Payment Method</h3>
-        <select id="pay-method" onchange="updateBill()">
-            <option value="EZCASH">EZCASH</option>
-            <option value="BANK PAYMENT">BANK PAYMENT</option>
-            <option value="CASH">CASH</option>
-        </select>
-    </div>
-
-    <div id="bill-preview" class="step-card hidden">
-        <h3>Order Summary (Bill)</h3>
-        <div class="bill-box" id="bill-text"></div>
-        <button class="whatsapp-btn" onclick="sendToWhatsApp()">SEND ORDER VIA WHATSAPP</button>
     </div>
 
 </div>
 
 <script>
-    let order = { game: "", category: "", package: "", price: 0, total: 0 };
+    let order = { game: '', cat: '', pkg: '', price: 0, total: 0 };
 
-    const prices = {
-        "Weekly Membership": 500,
-        "Weekly Lite Membership": 130,
-        "Monthly Membership": 2350,
-        "100 Diamonds": 350,
-        "Level Up Pass": 450,
-        "100 Likes": 150
+    const data = {
+        'Free Fire': {
+            'Memberships': [
+                { name: 'Weekly Membership', price: 500, info: 'Srilankan Region. Instant Rewards + Daily Diamonds.' },
+                { name: 'Weekly Lite', price: 130, info: 'Budget friendly rewards for 7 days.' },
+                { name: 'Monthly Membership', price: 2330, info: '30 Days Rewards. Best value for gamers.' }
+            ],
+            'Diamonds': [
+                { name: '100 Diamonds', price: 320, info: 'Direct Player ID Topup.' },
+                { name: '500 Diamonds', price: 1450, info: 'Direct Player ID Topup.' }
+            ],
+            'FF Likes': [
+                { name: '1000 Likes', price: 200, info: 'Boost your Profile Popularity.' }
+            ],
+            'Level Up Pass': [
+                { name: 'Level Up Pass', price: 550, info: 'One time purchase per account.' }
+            ]
+        },
+        'PUBG': {
+            'UC Packages': [
+                { name: '60 UC', price: 350, info: 'Instant UC Transfer.' },
+                { name: '325 UC', price: 1650, info: 'Great for Royale Pass.' }
+            ]
+        }
     };
 
-    function selectGame(game) {
-        order.game = game;
-        document.getElementById('step-product').classList.remove('hidden');
-        setActive(event);
-    }
-
-    function selectCat(cat) {
-        order.category = cat;
-        const pkgDiv = document.getElementById('package-list');
-        pkgDiv.innerHTML = '';
-        document.getElementById('step-packages').classList.remove('hidden');
-
-        let options = [];
-        if(cat === 'Memberships') options = ["Weekly Membership", "Weekly Lite Membership", "Monthly Membership"];
-        else if(cat === 'Diamonds') options = ["100 Diamonds", "500 Diamonds"];
-        else options = [cat];
-
-        options.forEach(opt => {
-            let div = document.createElement('div');
-            div.className = 'btn-opt';
-            div.innerText = opt;
-            div.onclick = () => selectPkg(opt);
-            pkgDiv.appendChild(div);
+    function switchTab(tab) {
+        document.getElementById('tab-order').classList.toggle('hidden', tab !== 'order');
+        document.getElementById('tab-history').classList.toggle('hidden', tab !== 'history');
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.innerText.toLowerCase().includes(tab));
         });
+        if(tab === 'history') loadHistory();
     }
 
-    function selectPkg(pkg) {
-        order.package = pkg;
-        order.price = prices[pkg] || 500;
-        updateBill();
+    function setGame(game, el) {
+        order.game = game;
+        toggleActive(el, 'game');
+        const catList = document.getElementById('cat-list');
+        catList.innerHTML = '';
+        if(data[game]) {
+            Object.keys(data[game]).forEach(cat => {
+                catList.innerHTML += `<div class="opt-btn" onclick="setCat('${cat}', this)">${cat}</div>`;
+            });
+            document.getElementById('section-cat').classList.remove('hidden');
+            document.getElementById('section-pkg').classList.add('hidden');
+        }
     }
 
-    function updateBill() {
-        const count = document.getElementById('item-count').value;
-        order.total = order.price * count;
+    function setCat(cat, el) {
+        order.cat = cat;
+        toggleActive(el, 'cat');
+        const pkgList = document.getElementById('pkg-list');
+        pkgList.innerHTML = '';
+        data[order.game][cat].forEach(p => {
+            pkgList.innerHTML += `<div class="opt-btn" onclick="setPkg('${p.name}', ${p.price}, '${p.info}', this)">${p.name}<br><small>LKR ${p.price}</small></div>`;
+        });
+        document.getElementById('section-pkg').classList.remove('hidden');
+    }
+
+    function setPkg(name, price, info, el) {
+        order.pkg = name;
+        order.price = price;
+        toggleActive(el, 'pkg');
+        const infoDiv = document.getElementById('product-info');
+        infoDiv.innerHTML = `<b>Details:</b> ${info}`;
+        infoDiv.classList.remove('hidden');
+        calcTotal();
+    }
+
+    function calcTotal() {
+        let q = document.getElementById('qty').value;
+        order.total = order.price * q;
+        document.getElementById('section-bill').classList.remove('hidden');
+        document.getElementById('bill-content').innerHTML = `
+<b>ABN TOPUP CENTRE SL</b>
+--------------------------
+DATE: ${new Date().toLocaleDateString()}
+CUST: ${document.getElementById('name').value || 'Guest'}
+GAME: ${order.game}
+ITEM: ${order.pkg}
+QTY : ${q}
+PAY : ${document.getElementById('pay-method').value}
+--------------------------
+<b>TOTAL: LKR ${order.total}.00</b>`;
+    }
+
+    function saveToHistory() {
+        let history = JSON.parse(localStorage.getItem('abn_history')) || [];
+        let newEntry = {
+            date: new Date().toLocaleString(),
+            game: order.game,
+            item: order.pkg,
+            total: order.total,
+            qty: document.getElementById('qty').value
+        };
+        history.unshift(newEntry);
+        localStorage.setItem('abn_history', JSON.stringify(history.slice(0, 10)));
+    }
+
+    function loadHistory() {
+        let history = JSON.parse(localStorage.getItem('abn_history')) || [];
+        const list = document.getElementById('history-list');
+        if(history.length === 0) {
+            list.innerHTML = '<p style="text-align:center; opacity:0.5;">No history found.</p>';
+            return;
+        }
+        list.innerHTML = history.map(item => `
+            <div class="history-item">
+                <span class="history-date">${item.date}</span>
+                <span class="history-status">Sent</span><br>
+                <b>${item.game}</b> - ${item.item} (x${item.qty})<br>
+                LKR ${item.total}.00
+            </div>
+        `).join('');
+    }
+
+    function sendOrder() {
+        const n = document.getElementById('name').value;
+        const p = document.getElementById('phone').value;
+        if(!n || !p) return alert("Please fill Name & Phone!");
+
+        saveToHistory();
+
+        let msg = `*NEW ORDER - ABN TOPUP CENTRE*%0A%0A` +
+                  `*CUSTOMER INFO*%0A` +
+                  `Name: ${n}%0A` +
+                  `Contact: ${p}%0A%0A` +
+                  `*PRODUCT INFO*%0A` +
+                  `Game: ${order.game}%0A` +
+                  `Package: ${order.pkg}%0A` +
+                  `Quantity: ${document.getElementById('qty').value}%0A` +
+                  `Payment: ${document.getElementById('pay-method').value}%0A%0A` +
+                  `*TOTAL BILL: LKR ${order.total}.00*`;
+
+        window.open(`https://wa.me/94777990902?text=${msg}`, '_blank');
         
-        document.getElementById('bill-preview').classList.remove('hidden');
-        document.getElementById('bill-text').innerHTML = `
-            <b>ABN TOPUP CENTRE</b><br>
-            --------------------------<br>
-            Customer: ${document.getElementById('cust-name').value}<br>
-            Game: ${order.game}<br>
-            Item: ${order.package}<br>
-            Qty: ${count}<br>
-            Payment: ${document.getElementById('pay-method').value}<br>
-            --------------------------<br>
-            TOTAL: LKR ${order.total}.00
-        `;
+        // After 1 second, switch to history tab automatically
+        setTimeout(() => switchTab('history'), 1000);
     }
 
-    function sendToWhatsApp() {
-        const name = document.getElementById('cust-name').value;
-        const phone = document.getElementById('cust-phone').value;
-        const email = document.getElementById('cust-email').value;
-        const method = document.getElementById('pay-method').value;
-        const count = document.getElementById('item-count').value;
-
-        if(!name || !phone) { alert("Please enter Name and Phone!"); return; }
-
-        let text = `*ABN TOPUP CENTRE ORDER*%0A` +
-                   `--------------------------%0A` +
-                   `*CUSTOMER DETAILS*%0A` +
-                   `Name: ${name}%0A` +
-                   `Phone: ${phone}%0A` +
-                   `Email: ${email}%0A%0A` +
-                   `*ORDER DETAILS*%0A` +
-                   `Game: ${order.game}%0A` +
-                   `Category: ${order.category}%0A` +
-                   `Package: ${order.package}%0A` +
-                   `Quantity: ${count}%0A` +
-                   `Method: ${method}%0A` +
-                   `--------------------------%0A` +
-                   `*TOTAL BILL: LKR ${order.total}.00*`;
-
-        window.open(`https://wa.me/94777990902?text=${text}`, '_blank');
-    }
-
-    function setActive(e) {
-        // Simple visual toggle for buttons
+    function toggleActive(el, type) {
+        el.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+        el.classList.add('active');
     }
 </script>
 
