@@ -120,6 +120,7 @@
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 0.95rem;
+            user-select: none;
         }
 
         .tab-btn:hover {
@@ -210,6 +211,7 @@
             font-size: 0.95rem;
             position: relative;
             overflow: hidden;
+            user-select: none;
         }
 
         .option-btn::before {
@@ -222,9 +224,10 @@
             background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             opacity: 0;
             transition: opacity 0.3s ease;
+            z-index: 0;
         }
 
-        .option-btn span {
+        .option-btn .btn-content {
             position: relative;
             z-index: 1;
         }
@@ -238,7 +241,6 @@
         .option-btn.active {
             border-color: transparent;
             box-shadow: 0 12px 32px rgba(139, 92, 246, 0.5);
-            transform: scale(1.05);
         }
 
         .option-btn.active::before {
@@ -249,7 +251,7 @@
             display: block;
             margin-top: 6px;
             font-size: 0.8rem;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         .info-box {
@@ -290,6 +292,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+            user-select: none;
         }
 
         .whatsapp-btn:hover {
@@ -345,7 +348,7 @@
         }
 
         .hidden {
-            display: none;
+            display: none !important;
         }
 
         .empty-state {
@@ -402,14 +405,6 @@
             .container {
                 padding: 15px;
             }
-
-            .tabs {
-                flex-direction: column;
-            }
-
-            .tab-btn {
-                width: 100%;
-            }
         }
     </style>
 </head>
@@ -418,7 +413,7 @@
 <div class="container">
     <header>
         <div class="logo">
-            <img src="ABN-LOGO.png" alt="ABN Logo">
+            <img src="ADS — ABN DIGITAL STORE 20251223_131548.jpg" alt="ABN Logo">
         </div>
         <h1>ABN TOPUP CENTRE</h1>
         <p class="tagline">Game Topup • Sri Lanka</p>
@@ -443,10 +438,10 @@
             <div class="card-title">Select Game</div>
             <div class="grid">
                 <div class="option-btn" onclick="setGame('Free Fire', this)">
-                    <span>🔥 FREE FIRE</span>
+                    <div class="btn-content">🔥 FREE FIRE</div>
                 </div>
                 <div class="option-btn" onclick="setGame('PUBG', this)">
-                    <span>🎮 PUBG MOBILE</span>
+                    <div class="btn-content">🎮 PUBG MOBILE</div>
                 </div>
             </div>
         </div>
@@ -572,24 +567,38 @@
     };
 
     function switchTab(tab) {
+        console.log('Switching to tab:', tab);
         document.getElementById('tab-order').classList.toggle('hidden', tab !== 'order');
         document.getElementById('tab-history').classList.toggle('hidden', tab !== 'history');
         document.getElementById('tab-download').classList.toggle('hidden', tab !== 'download');
+        
         document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.innerText.toLowerCase().includes(tab.toLowerCase()));
+            btn.classList.remove('active');
         });
-        if(tab === 'history') loadHistory();
+        event.target.classList.add('active');
+        
+        if(tab === 'history') {
+            loadHistory();
+        }
     }
 
     function setGame(game, el) {
+        console.log('Setting game:', game);
         order.game = game;
         toggleActive(el);
+        
         const catList = document.getElementById('cat-list');
         catList.innerHTML = '';
+        
         if(data[game]) {
             Object.keys(data[game]).forEach(cat => {
-                catList.innerHTML += `<div class="option-btn" onclick="setCat('${cat}', this)"><span>${cat}</span></div>`;
+                const btn = document.createElement('div');
+                btn.className = 'option-btn';
+                btn.onclick = function() { setCat(cat, this); };
+                btn.innerHTML = `<div class="btn-content">${cat}</div>`;
+                catList.appendChild(btn);
             });
+            
             document.getElementById('section-cat').classList.remove('hidden');
             document.getElementById('section-pkg').classList.add('hidden');
             document.getElementById('section-bill').classList.add('hidden');
@@ -597,17 +606,13 @@
     }
 
     function setCat(cat, el) {
+        console.log('Setting category:', cat);
         order.cat = cat;
         toggleActive(el);
+        
         const pkgList = document.getElementById('pkg-list');
         pkgList.innerHTML = '';
+        
         data[order.game][cat].forEach(p => {
-            pkgList.innerHTML += `<div class="option-btn" onclick="setPkg('${p.name}', ${p.price}, '${p.info.replace(/'/g, "\\'")}', this)"><span>${p.name}<small>LKR ${p.price}</small></span></div>`;
-        });
-        document.getElementById('section-pkg').classList.remove('hidden');
-        document.getElementById('section-bill').classList.add('hidden');
-    }
-
-    function setPkg(name, price, info, el) {
-        order.pkg = name;
-        order.price = 
+            const btn = document.createElement('div');
+            btn.className = 'op
