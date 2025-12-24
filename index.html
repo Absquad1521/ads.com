@@ -46,6 +46,45 @@
             z-index: 0;
         }
 
+         .download-app-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            animation: pulse 2s ease-in-out infinite;
+         }
+
+          @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
+            }
+            50% {
+                box-shadow: 0 8px 32px rgba(139, 92, 246, 0.6);
+            }
+        }
+
+        .download-app-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(139, 92, 246, 0.6);
+        }
+
+        .download-app-btn:active {
+            transform: translateY(-1px);
+        }
+        
+
         .container {
             position: relative;
             z-index: 1;
@@ -357,6 +396,11 @@
     </style>
 </head>
 <body>
+
+    <!-- Download App Button (Top Right) -->
+<a href="download.html" class="download-app-btn">
+    📱 Download App
+</a>
 
 <div class="container">
     <header>
