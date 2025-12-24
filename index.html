@@ -1,253 +1,600 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ABN TOPUP CENTRE | Sri Lanka</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABN TOPUP CENTRE | Sri Lanka</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-    font-family:Segoe UI,Roboto,sans-serif;
-    background:linear-gradient(135deg,#0a0118,#1e0a3e,#0a0118);
-    color:#f8fafc;
-    min-height:100vh;
-}
-body::before{
-    content:'';
-    position:fixed;
-    inset:0;
-    background:
-        radial-gradient(circle at 20% 50%,rgba(139,92,246,.15),transparent 50%),
-        radial-gradient(circle at 80% 80%,rgba(236,72,153,.15),transparent 50%);
-    z-index:0;
-}
-.container{max-width:600px;margin:auto;padding:20px;position:relative;z-index:1}
-header{text-align:center;padding:30px 10px}
-.logo{
-    width:100px;height:100px;margin:auto;border-radius:24px;
-    overflow:hidden;border:3px solid #8b5cf6;
-    box-shadow:0 0 40px rgba(139,92,246,.4);
-    animation:float 3s ease-in-out infinite;
-}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.logo img{width:100%;height:100%;object-fit:cover}
-h1{
-    font-size:2.3rem;font-weight:800;
-    background:linear-gradient(135deg,#8b5cf6,#ec4899);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-.tagline{letter-spacing:3px;color:#cbd5e1;font-size:.85rem;margin-top:6px}
+        :root {
+            --bg-dark: #0a0118;
+            --bg-card: rgba(20, 10, 40, 0.6);
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #ec4899;
+            --accent-blue: #3b82f6;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --success: #10b981;
+        }
 
-.tabs{display:flex;gap:12px;margin:20px 0}
-.tab-btn{
-    flex:1;padding:14px;border-radius:16px;
-    background:rgba(20,10,40,.6);
-    border:1px solid rgba(139,92,246,.3);
-    color:#cbd5e1;font-weight:600;
-    cursor:pointer;transition:.3s;
-}
-.tab-btn.active{
-    background:linear-gradient(135deg,#8b5cf6,#ec4899);
-    color:#fff;border:none;
-    box-shadow:0 8px 24px rgba(139,92,246,.4);
-}
+        body {
+            background: linear-gradient(135deg, #0a0118 0%, #1e0a3e 50%, #0a0118 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-.card{
-    background:rgba(20,10,40,.6);
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(139,92,246,.2);
-    border-radius:20px;
-    padding:22px;margin-bottom:20px;
-}
-.card-title{
-    color:#8b5cf6;font-size:.8rem;
-    text-transform:uppercase;
-    letter-spacing:2px;font-weight:700;
-    margin-bottom:14px;
-}
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
 
-input,select{
-    width:100%;padding:14px;
-    background:rgba(0,0,0,.4);
-    border:1px solid rgba(139,92,246,.3);
-    border-radius:12px;
-    color:#fff;margin-bottom:12px;
-}
-input:focus,select:focus{outline:none;border-color:#8b5cf6}
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.option-btn{
-    padding:18px;text-align:center;
-    background:rgba(0,0,0,.4);
-    border:2px solid rgba(139,92,246,.3);
-    border-radius:16px;
-    cursor:pointer;font-weight:600;
-    transition:.3s;
-}
-.option-btn.active{
-    background:linear-gradient(135deg,#8b5cf6,#ec4899);
-    border:none;color:#fff;
-}
-.option-btn small{display:block;font-size:.75rem;margin-top:6px}
+        header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
 
-.info-box{
-    background:rgba(59,130,246,.1);
-    border:1px solid rgba(59,130,246,.3);
-    border-radius:12px;
-    padding:12px;margin-top:12px;
-    font-size:.9rem;
-}
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 3px solid var(--accent-primary);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
+            animation: float 3s ease-in-out infinite;
+        }
 
-.bill-preview{
-    font-family:monospace;
-    white-space:pre-wrap;
-    background:rgba(255,255,255,.05);
-    border-radius:12px;padding:18px;
-}
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
 
-.whatsapp-btn{
-    width:100%;margin-top:18px;
-    padding:18px;border:none;
-    border-radius:16px;
-    font-weight:700;font-size:1.05rem;
-    background:linear-gradient(135deg,#25D366,#128C7E);
-    color:#fff;cursor:pointer;
-}
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.hidden{display:none}
-</style>
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 14px;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2);
+        }
+
+        .card-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        input::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .option-btn {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 16px;
+            padding: 20px 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .option-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .option-btn:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 12px 24px rgba(139, 92, 246, 0.3);
+        }
+
+        .option-btn.active {
+            border-color: transparent;
+            box-shadow: 0 12px 32px rgba(139, 92, 246, 0.5);
+            transform: scale(1.05);
+        }
+
+        .option-btn.active::before {
+            opacity: 1;
+        }
+
+        .option-btn small {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .info-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .bill-preview {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            margin-top: 16px;
+        }
+
+        .whatsapp-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border: none;
+            border-radius: 16px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .history-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--accent-primary);
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .history-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .history-status {
+            background: var(--success);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .history-details {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
-
 <body>
+
 <div class="container">
+    <header>
+        <div class="logo">
+            <img src="ABN-LOGO.png" alt="ABN Logo">
+        </div>
+        <h1>ABN TOPUP CENTRE</h1>
+        <p class="tagline">Game Topup • Sri Lanka</p>
+    </header>
 
-<header>
-    <div class="logo">
-        <img src="ABN-LOGO.png">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('order')">Order Now</button>
+        <button class="tab-btn" onclick="switchTab('history')">History</button>
     </div>
-    <h1>ABN TOPUP CENTRE</h1>
-    <div class="tagline">GAME TOPUP • SRI LANKA</div>
-</header>
 
-<div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('order')">Order</button>
-    <button class="tab-btn" onclick="switchTab('history')">History</button>
-    <button class="tab-btn" onclick="switchTab('download')">Download</button>
-</div>
+    <div id="tab-order">
+        <div class="card">
+            <div class="card-title">Customer Information</div>
+            <input type="text" id="name" placeholder="Full Name">
+            <input type="text" id="phone" placeholder="WhatsApp Number (+94)">
+            <input type="email" id="email" placeholder="Email Address (Optional)">
+        </div>
 
-<!-- ORDER -->
-<div id="order">
-<div class="card">
-<div class="card-title">Customer Info</div>
-<input id="name" placeholder="Full Name">
-<input id="phone" placeholder="WhatsApp Number (+94)">
-</div>
+        <div class="card">
+            <div class="card-title">Select Game</div>
+            <div class="grid">
+                <div class="option-btn" onclick="setGame('Free Fire', this)">
+                    <span>🔥 FREE FIRE</span>
+                </div>
+                <div class="option-btn" onclick="setGame('PUBG', this)">
+                    <span>🎮 PUBG MOBILE</span>
+                </div>
+            </div>
+        </div>
 
-<div class="card">
-<div class="card-title">Select Game</div>
-<div class="grid">
-<div class="option-btn" onclick="selectGame('Free Fire',this)">🔥 FREE FIRE</div>
-<div class="option-btn" onclick="selectGame('PUBG',this)">🎮 PUBG</div>
-</div>
-</div>
+        <div id="section-cat" class="card hidden">
+            <div class="card-title">Category</div>
+            <div class="grid" id="cat-list"></div>
+        </div>
 
-<div class="card hidden" id="packages">
-<div class="card-title">Packages</div>
-<div class="grid" id="pkgList"></div>
-</div>
+        <div id="section-pkg" class="card hidden">
+            <div class="card-title">Select Package</div>
+            <div id="pkg-list" class="grid"></div>
+            <div id="product-info" class="hidden"></div>
+            
+            <div style="margin-top: 16px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Quantity</label>
+                <input type="number" id="qty" value="1" min="1" onchange="calcTotal()">
+            </div>
+        </div>
 
-<div class="card hidden" id="bill">
-<div class="card-title">Order Summary</div>
-<div class="bill-preview" id="summary"></div>
-<button class="whatsapp-btn" onclick="sendWhatsApp()">📱 Send WhatsApp Order</button>
-</div>
-</div>
+        <div class="card">
+            <div class="card-title">Payment Method</div>
+            <select id="pay-method" onchange="calcTotal()">
+                <option value="EZCASH">EZCASH</option>
+                <option value="BANK PAYMENT">BANK PAYMENT</option>
+                <option value="CASH">CASH</option>
+            </select>
+        </div>
 
-<!-- HISTORY -->
-<div id="history" class="hidden">
-<div class="card"><div class="card-title">History</div>No orders yet</div>
-</div>
+        <div id="section-bill" class="card hidden">
+            <div class="card-title">Order Summary</div>
+            <div class="bill-preview" id="bill-content"></div>
+            <button class="whatsapp-btn" onclick="sendOrder()">📱 Send to WhatsApp</button>
+        </div>
+    </div>
 
-<!-- DOWNLOAD -->
-<div id="download" class="hidden">
-<div class="card" style="text-align:center">
-<div class="card-title">Download App</div>
-<p>Android APK coming soon</p>
-</div>
-</div>
-
+    <div id="tab-history" class="hidden">
+        <div class="card">
+            <div class="card-title">Order History</div>
+            <div id="history-list">
+                <div class="empty-state">No orders yet</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
-const data={
-"Free Fire":[
-{name:"Weekly Membership",price:500},
-{name:"100 Diamonds",price:320}
-],
-"PUBG":[
-{name:"60 UC",price:350},
-{name:"325 UC",price:1650}
-]
-};
+    let order = { game: '', cat: '', pkg: '', price: 0, total: 0 };
 
-let order={};
+    const data = {
+        'Free Fire': {
+            'Memberships': [
+                { name: 'Weekly Membership', price: 500, info: 'Sri Lankan Region. Instant Rewards + Daily Diamonds for 7 days.' },
+                { name: 'Weekly Lite', price: 130, info: 'Budget friendly rewards package for 7 days.' },
+                { name: 'Monthly Membership', price: 2330, info: '30 Days Premium Rewards. Best value for regular gamers.' }
+            ],
+            'Diamonds': [
+                { name: '100 Diamonds', price: 320, info: 'Direct Player ID Topup. Instant delivery.' },
+                { name: '500 Diamonds', price: 1450, info: 'Direct Player ID Topup. Great value pack.' }
+            ],
+            'FF Likes': [
+                { name: '1000 Likes', price: 200, info: 'Boost your Profile Popularity instantly.' }
+            ],
+            'Level Up Pass': [
+                { name: 'Level Up Pass', price: 550, info: 'One time purchase per account. Unlock exclusive rewards.' }
+            ]
+        },
+        'PUBG': {
+            'UC Packages': [
+                { name: '60 UC', price: 350, info: 'Instant UC Transfer to your account.' },
+                { name: '325 UC', price: 1650, info: 'Perfect for Royale Pass and premium items.' }
+            ]
+        }
+    };
 
-function switchTab(t){
-["order","history","download"].forEach(id=>{
-document.getElementById(id).classList.toggle("hidden",id!==t);
-});
-document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
-event.target.classList.add("active");
-}
+    function switchTab(tab) {
+        document.getElementById('tab-order').classList.toggle('hidden', tab !== 'order');
+        document.getElementById('tab-history').classList.toggle('hidden', tab !== 'history');
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.innerText.toLowerCase().includes(tab.toLowerCase()));
+        });
+        if(tab === 'history') loadHistory();
+    }
 
-function selectGame(game,el){
-order.game=game;
-document.querySelectorAll(".option-btn").forEach(b=>b.classList.remove("active"));
-el.classList.add("active");
+    function setGame(game, el) {
+        order.game = game;
+        toggleActive(el);
+        const catList = document.getElementById('cat-list');
+        catList.innerHTML = '';
+        if(data[game]) {
+            Object.keys(data[game]).forEach(cat => {
+                catList.innerHTML += `<div class="option-btn" onclick="setCat('${cat}', this)"><span>${cat}</span></div>`;
+            });
+            document.getElementById('section-cat').classList.remove('hidden');
+            document.getElementById('section-pkg').classList.add('hidden');
+            document.getElementById('section-bill').classList.add('hidden');
+        }
+    }
 
-const list=document.getElementById("pkgList");
-list.innerHTML="";
-data[game].forEach(p=>{
-const d=document.createElement("div");
-d.className="option-btn";
-d.innerHTML=p.name+"<small>LKR "+p.price+"</small>";
-d.onclick=()=>selectPkg(p);
-list.appendChild(d);
-});
-document.getElementById("packages").classList.remove("hidden");
-}
+    function setCat(cat, el) {
+        order.cat = cat;
+        toggleActive(el);
+        const pkgList = document.getElementById('pkg-list');
+        pkgList.innerHTML = '';
+        data[order.game][cat].forEach(p => {
+            pkgList.innerHTML += `<div class="option-btn" onclick="setPkg('${p.name}', ${p.price}, '${p.info.replace(/'/g, "\\'")}', this)"><span>${p.name}<small>LKR ${p.price}</small></span></div>`;
+        });
+        document.getElementById('section-pkg').classList.remove('hidden');
+        document.getElementById('section-bill').classList.add('hidden');
+    }
 
-function selectPkg(p){
-order.pkg=p.name;
-order.price=p.price;
-document.getElementById("bill").classList.remove("hidden");
-document.getElementById("summary").textContent=
-`ABN TOPUP CENTRE
------------------------
-Name: ${name.value}
+    function setPkg(name, price, info, el) {
+        order.pkg = name;
+        order.price = price;
+        toggleActive(el);
+        const infoDiv = document.getElementById('product-info');
+        infoDiv.className = 'info-box';
+        infoDiv.innerHTML = `<strong>📦 Package Details:</strong><br>${info}`;
+        calcTotal();
+    }
+
+    function calcTotal() {
+        let q = parseInt(document.getElementById('qty').value) || 1;
+        order.total = order.price * q;
+        document.getElementById('section-bill').classList.remove('hidden');
+        document.getElementById('bill-content').innerHTML = `
+═══════════════════════════════
+    ABN TOPUP CENTRE SL
+═══════════════════════════════
+Date: ${new Date().toLocaleDateString()}
+Customer: ${document.getElementById('name').value || 'Guest'}
+
 Game: ${order.game}
-Package: ${order.pkg}
-Amount: LKR ${order.price}
------------------------`;
-}
+Item: ${order.pkg}
+Quantity: ${q}
+Payment: ${document.getElementById('pay-method').value}
 
-function sendWhatsApp(){
-if(!name.value||!phone.value){
-alert("Fill name & WhatsApp number");
-return;
-}
-const msg=
-`*NEW ORDER - ABN TOPUP CENTRE*
-Name: ${name.value}
-Phone: ${phone.value}
-Game: ${order.game}
-Package: ${order.pkg}
-Amount: LKR ${order.price}`;
-window.open("https://wa.me/94XXXXXXXXX?text="+encodeURIComponent(msg));
-}
+═══════════════════════════════
+<strong>TOTAL: LKR ${order.total}.00</strong>
+═══════════════════════════════`;
+    }
+
+    function saveToHistory() {
+        let history = JSON.parse(localStorage.getItem('abn_history')) || [];
+        let newEntry = {
+            date: new Date().toLocaleString(),
+            game: order.game,
+            item: order.pkg,
+            total: order.total,
+            qty: document.getElementById('qty').value
+        };
+        history.unshift(newEntry);
+        localStorage.setItem('abn_history', JSON.stringify(history.slice(0, 20)));
+    }
+
+    function loadHistory() {
+        let history = JSON.parse(localStorage.getItem('abn_history')) || [];
+        const list = document.getElementById('history-list');
+        if(history.length === 0) {
+            list.innerHTML = '<div class="empty-state">No orders yet</div>';
+            return;
+        }
+        list.innerHTML = history.map(item => `
+            <div class="history-item">
+                <div class="history-header">
+                    <span class="history-date">${item.date}</span>
+                    <span class="history-status">✓ Sent</span>
+                </div>
+                <div class="history-details">
+                    <strong>${item.game}</strong> - ${item.item}<br>
+                    Quantity: ${item.qty} | Total: <strong>LKR ${item.total}.00</strong>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function sendOrder() {
+        const n = document.getElementById('name').value;
+        const p = document.getElementById('phone').value;
+        if(!n || !p) {
+            alert("⚠️ Please fill in your Name and WhatsApp Number!");
+            return;
+        }
+
+        saveToHistory();
+
+        let msg = `*NEW ORDER - ABN TOPUP CENTRE*%0A%0A` +
+                  `*CUSTOMER INFO*%0A` +
+                  `Name: ${n}%0A` +
+                  `Contact: ${p}%0A%0A` +
+                  `*PRODUCT INFO*%0A` +
+                  `Game: ${order.game}%0A` +
+                  `Package: ${order.pkg}%0A` +
+                  `Quantity: ${document.getElementById('qty').value}%0A` +
+                  `Payment: ${document.getElementById('pay-method').value}%0A%0A` +
+                  `*TOTAL: LKR ${order.total}.00*`;
+
+        window.open(`https://wa.me/94777990902?text=${msg}`, '_blank');
+        
+        setTimeout(() => switchTab('history'), 800);
+    }
+
+    function toggleActive(el) {
+        el.parentElement.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
+        el.classList.add('active');
+    }
 </script>
 
 </body>
-</html>
+            </html>
