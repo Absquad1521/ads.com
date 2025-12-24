@@ -1,596 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABN TOPUP CENTRE | Sri Lanka</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABN TOPUP CENTRE | Sri Lanka</title>
 
-        body {
-            background: linear-gradient(135deg, #0a0118 0%, #1e0a3e 50%, #0a0118 100%);
-            background-attachment: fixed;
-            color: #f8fafc;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            min-height: 100vh;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:Segoe UI,Roboto,sans-serif;
+    background:linear-gradient(135deg,#0a0118,#1e0a3e,#0a0118);
+    color:#f8fafc;
+    min-height:100vh;
+}
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 50%,rgba(139,92,246,.15),transparent 50%),
+        radial-gradient(circle at 80% 80%,rgba(236,72,153,.15),transparent 50%);
+    z-index:0;
+}
+.container{max-width:600px;margin:auto;padding:20px;position:relative;z-index:1}
+header{text-align:center;padding:30px 10px}
+.logo{
+    width:100px;height:100px;margin:auto;border-radius:24px;
+    overflow:hidden;border:3px solid #8b5cf6;
+    box-shadow:0 0 40px rgba(139,92,246,.4);
+    animation:float 3s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.logo img{width:100%;height:100%;object-fit:cover}
+h1{
+    font-size:2.3rem;font-weight:800;
+    background:linear-gradient(135deg,#8b5cf6,#ec4899);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+.tagline{letter-spacing:3px;color:#cbd5e1;font-size:.85rem;margin-top:6px}
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
+.tabs{display:flex;gap:12px;margin:20px 0}
+.tab-btn{
+    flex:1;padding:14px;border-radius:16px;
+    background:rgba(20,10,40,.6);
+    border:1px solid rgba(139,92,246,.3);
+    color:#cbd5e1;font-weight:600;
+    cursor:pointer;transition:.3s;
+}
+.tab-btn.active{
+    background:linear-gradient(135deg,#8b5cf6,#ec4899);
+    color:#fff;border:none;
+    box-shadow:0 8px 24px rgba(139,92,246,.4);
+}
 
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+.card{
+    background:rgba(20,10,40,.6);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(139,92,246,.2);
+    border-radius:20px;
+    padding:22px;margin-bottom:20px;
+}
+.card-title{
+    color:#8b5cf6;font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:2px;font-weight:700;
+    margin-bottom:14px;
+}
 
-        header {
-            text-align: center;
-            padding: 40px 20px 30px;
-            margin-bottom: 30px;
-        }
+input,select{
+    width:100%;padding:14px;
+    background:rgba(0,0,0,.4);
+    border:1px solid rgba(139,92,246,.3);
+    border-radius:12px;
+    color:#fff;margin-bottom:12px;
+}
+input:focus,select:focus{outline:none;border-color:#8b5cf6}
 
-        .logo {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 3px solid #8b5cf6;
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
-            animation: float 3s ease-in-out infinite;
-        }
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.option-btn{
+    padding:18px;text-align:center;
+    background:rgba(0,0,0,.4);
+    border:2px solid rgba(139,92,246,.3);
+    border-radius:16px;
+    cursor:pointer;font-weight:600;
+    transition:.3s;
+}
+.option-btn.active{
+    background:linear-gradient(135deg,#8b5cf6,#ec4899);
+    border:none;color:#fff;
+}
+.option-btn small{display:block;font-size:.75rem;margin-top:6px}
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+.info-box{
+    background:rgba(59,130,246,.1);
+    border:1px solid rgba(59,130,246,.3);
+    border-radius:12px;
+    padding:12px;margin-top:12px;
+    font-size:.9rem;
+}
 
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.bill-preview{
+    font-family:monospace;
+    white-space:pre-wrap;
+    background:rgba(255,255,255,.05);
+    border-radius:12px;padding:18px;
+}
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #8b5cf6, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
+.whatsapp-btn{
+    width:100%;margin-top:18px;
+    padding:18px;border:none;
+    border-radius:16px;
+    font-weight:700;font-size:1.05rem;
+    background:linear-gradient(135deg,#25D366,#128C7E);
+    color:#fff;cursor:pointer;
+}
 
-        .tagline {
-            color: #cbd5e1;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 600;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 14px;
-            background: rgba(20, 10, 40, 0.6);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            border-radius: 16px;
-            color: #cbd5e1;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .tab-btn:hover {
-            border-color: #8b5cf6;
-            transform: translateY(-2px);
-        }
-
-        .tab-btn.active {
-            background: linear-gradient(135deg, #8b5cf6, #ec4899);
-            border-color: transparent;
-            color: white;
-            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
-        }
-
-        .card {
-            background: rgba(20, 10, 40, 0.6);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            border-radius: 20px;
-            padding: 24px;
-            margin-bottom: 20px;
-        }
-
-        .card-title {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #8b5cf6;
-            margin-bottom: 16px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .card-title::before {
-            content: '';
-            width: 4px;
-            height: 20px;
-            background: linear-gradient(180deg, #8b5cf6, #ec4899);
-            border-radius: 2px;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 14px 16px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 12px;
-            color: #f8fafc;
-            font-size: 1rem;
-            margin-bottom: 12px;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: #8b5cf6;
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .option-btn {
-            background: rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(139, 92, 246, 0.3);
-            border-radius: 16px;
-            padding: 20px 12px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            font-size: 0.95rem;
-            position: relative;
-        }
-
-        .option-btn:hover {
-            transform: translateY(-4px);
-            border-color: #8b5cf6;
-            box-shadow: 0 12px 24px rgba(139, 92, 246, 0.3);
-        }
-
-        .option-btn.active {
-            background: linear-gradient(135deg, #8b5cf6, #ec4899);
-            border-color: transparent;
-            box-shadow: 0 12px 32px rgba(139, 92, 246, 0.5);
-        }
-
-        .option-btn small {
-            display: block;
-            margin-top: 6px;
-            font-size: 0.8rem;
-        }
-
-        .info-box {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 12px;
-            padding: 12px;
-            margin-top: 12px;
-            font-size: 0.9rem;
-            color: #cbd5e1;
-        }
-
-        .bill-preview {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 20px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.8;
-            white-space: pre-wrap;
-        }
-
-        .whatsapp-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            border: none;
-            border-radius: 16px;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
-        }
-
-        .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5);
-        }
-
-        .download-btn {
-            background: linear-gradient(135deg, #8b5cf6, #ec4899);
-            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
-        }
-
-        .history-item {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 12px;
-            border-left: 4px solid #8b5cf6;
-        }
-
-        .history-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .history-date {
-            font-size: 0.8rem;
-            color: #cbd5e1;
-        }
-
-        .history-status {
-            background: #10b981;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            opacity: 0.5;
-        }
-
-        .app-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, #8b5cf6, #ec4899);
-            border-radius: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            box-shadow: 0 12px 32px rgba(139, 92, 246, 0.4);
-        }
-
-        .version-box {
-            background: rgba(236, 72, 153, 0.1);
-            border: 1px solid rgba(236, 72, 153, 0.3);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .container { padding: 15px; }
-        }
-    </style>
+.hidden{display:none}
+</style>
 </head>
+
 <body>
-
 <div class="container">
-    <header>
-        <div class="logo">
-            <img src="ABN-LOGO.png" alt="ABN Logo">
-        </div>
-        <h1>ABN TOPUP CENTRE</h1>
-        <p class="tagline">Game Topup • Sri Lanka</p>
-    </header>
 
-    <div class="tabs">
-        <button class="tab-btn active" id="btn-order">Order Now</button>
-        <button class="tab-btn" id="btn-history">History</button>
-        <button class="tab-btn" id="btn-download">Download App</button>
+<header>
+    <div class="logo">
+        <img src="ADS — ABN DIGITAL STORE 20251223_131548.jpg">
     </div>
+    <h1>ABN TOPUP CENTRE</h1>
+    <div class="tagline">GAME TOPUP • SRI LANKA</div>
+</header>
 
-    <div id="tab-order">
-        <div class="card">
-            <div class="card-title">Customer Information</div>
-            <input type="text" id="name" placeholder="Full Name">
-            <input type="text" id="phone" placeholder="WhatsApp Number (+94)">
-            <input type="email" id="email" placeholder="Email Address (Optional)">
-        </div>
+<div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('order')">Order</button>
+    <button class="tab-btn" onclick="switchTab('history')">History</button>
+    <button class="tab-btn" onclick="switchTab('download')">Download</button>
+</div>
 
-        <div class="card">
-            <div class="card-title">Select Game</div>
-            <div class="grid" id="game-grid">
-                <div class="option-btn" data-game="Free Fire">🔥 FREE FIRE</div>
-                <div class="option-btn" data-game="PUBG">🎮 PUBG MOBILE</div>
-            </div>
-        </div>
+<!-- ORDER -->
+<div id="order">
+<div class="card">
+<div class="card-title">Customer Info</div>
+<input id="name" placeholder="Full Name">
+<input id="phone" placeholder="WhatsApp Number (+94)">
+</div>
 
-        <div id="section-cat" class="card hidden">
-            <div class="card-title">Category</div>
-            <div class="grid" id="cat-list"></div>
-        </div>
+<div class="card">
+<div class="card-title">Select Game</div>
+<div class="grid">
+<div class="option-btn" onclick="selectGame('Free Fire',this)">🔥 FREE FIRE</div>
+<div class="option-btn" onclick="selectGame('PUBG',this)">🎮 PUBG</div>
+</div>
+</div>
 
-        <div id="section-pkg" class="card hidden">
-            <div class="card-title">Select Package</div>
-            <div id="pkg-list" class="grid"></div>
-            <div id="product-info" class="hidden"></div>
-            <div style="margin-top: 16px;" id="qty-section" class="hidden">
-                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Quantity</label>
-                <input type="number" id="qty" value="1" min="1">
-            </div>
-        </div>
+<div class="card hidden" id="packages">
+<div class="card-title">Packages</div>
+<div class="grid" id="pkgList"></div>
+</div>
 
-        <div class="card">
-            <div class="card-title">Payment Method</div>
-            <select id="pay-method">
-                <option value="EZCASH">EZCASH</option>
-                <option value="BANK PAYMENT">BANK PAYMENT</option>
-                <option value="CASH">CASH</option>
-            </select>
-        </div>
+<div class="card hidden" id="bill">
+<div class="card-title">Order Summary</div>
+<div class="bill-preview" id="summary"></div>
+<button class="whatsapp-btn" onclick="sendWhatsApp()">📱 Send WhatsApp Order</button>
+</div>
+</div>
 
-        <div id="section-bill" class="card hidden">
-            <div class="card-title">Order Summary</div>
-            <div class="bill-preview" id="bill-content"></div>
-            <button class="whatsapp-btn" id="send-order-btn">📱 Send to WhatsApp</button>
-        </div>
-    </div>
+<!-- HISTORY -->
+<div id="history" class="hidden">
+<div class="card"><div class="card-title">History</div>No orders yet</div>
+</div>
 
-    <div id="tab-history" class="hidden">
-        <div class="card">
-            <div class="card-title">Order History</div>
-            <div id="history-list">
-                <div class="empty-state">No orders yet</div>
-            </div>
-        </div>
-    </div>
+<!-- DOWNLOAD -->
+<div id="download" class="hidden">
+<div class="card" style="text-align:center">
+<div class="card-title">Download App</div>
+<p>Android APK coming soon</p>
+</div>
+</div>
 
-    <div id="tab-download" class="hidden">
-        <div class="card" style="text-align: center;">
-            <div class="card-title" style="justify-content: center;">📱 Download ABN App</div>
-            <div style="margin: 20px 0;">
-                <div class="app-icon">📦</div>
-                <h2 style="margin-bottom: 12px; font-size: 1.5rem;">ABN TOPUP CENTRE</h2>
-                <p style="color: #cbd5e1; margin-bottom: 24px;">
-                    Get faster access to topups with our mobile app.<br>
-                    Direct topups, instant notifications & exclusive deals.
-                </p>
-            </div>
-
-            <div class="info-box" style="text-align: left; margin-bottom: 20px;">
-                <strong>✨ App Features:</strong><br>
-                • Faster checkout process<br>
-                • Order tracking & history<br>
-                • Instant notifications<br>
-                • Exclusive app-only discounts<br>
-                • Secure payment options
-            </div>
-
-            <div class="version-box">
-                <div style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 8px;">Current Version</div>
-                <div style="font-size: 1.5rem; font-weight: 700; color: #ec4899;">v3.0.0</div>
-                <div style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">Latest Release</div>
-            </div>
-
-            <button class="whatsapp-btn download-btn" id="download-btn">📥 Download APK (5.2 MB)</button>
-
-            <div style="margin-top: 16px; font-size: 0.85rem; color: #cbd5e1;">
-                ⚠️ Enable "Install from Unknown Sources" in your Android settings
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-title">Installation Guide</div>
-            <div style="color: #cbd5e1; line-height: 1.8;">
-                <strong style="color: #f8fafc;">Step 1:</strong> Download the APK file<br>
-                <strong style="color: #f8fafc;">Step 2:</strong> Open the downloaded file<br>
-                <strong style="color: #f8fafc;">Step 3:</strong> Tap "Install" and wait<br>
-                <strong style="color: #f8fafc;">Step 4:</strong> Open ABN App & enjoy!
-            </div>
-        </div>
-    </div>
 </div>
 
 <script>
-(function() {
-    'use strict';
+const data={
+"Free Fire":[
+{name:"Weekly Membership",price:500},
+{name:"100 Diamonds",price:320}
+],
+"PUBG":[
+{name:"60 UC",price:350},
+{name:"325 UC",price:1650}
+]
+};
 
-    const order = { game: '', cat: '', pkg: '', price: 0, total: 0 };
+let order={};
 
-    const data = {
-        'Free Fire': {
-            'Memberships': [
-                { name: 'Weekly Membership', price: 500, info: 'Sri Lankan Region. Instant Rewards + Daily Diamonds for 7 days.' },
-                { name: 'Weekly Lite', price: 130, info: 'Budget friendly rewards package for 7 days.' },
-                { name: 'Monthly Membership', price: 2330, info: '30 Days Premium Rewards. Best value for regular gamers.' }
-            ],
-            'Diamonds': [
-                { name: '100 Diamonds', price: 320, info: 'Direct Player ID Topup. Instant delivery.' },
-                { name: '500 Diamonds', price: 1450, info: 'Direct Player ID Topup. Great value pack.' }
-            ],
-            'FF Likes': [
-                { name: '1000 Likes', price: 200, info: 'Boost your Profile Popularity instantly.' }
-            ],
-            'Level Up Pass': [
-                { name: 'Level Up Pass', price: 550, info: 'One time purchase per account. Unlock exclusive rewards.' }
-            ]
-        },
-        'PUBG': {
-            'UC Packages': [
-                { name: '60 UC', price: 350, info: 'Instant UC Transfer to your account.' },
-                { name: '325 UC', price: 1650, info: 'Perfect for Royale Pass and premium items.' }
-            ]
-        }
-    };
+function switchTab(t){
+["order","history","download"].forEach(id=>{
+document.getElementById(id).classList.toggle("hidden",id!==t);
+});
+document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+event.target.classList.add("active");
+}
 
-    // Tab switching
-    document.getElementById('btn-order').addEventListener('click', function() {
-        switchTab('order');
-    });
-    document.getElementById('btn-history').addEventListener('click', function() {
-        switchTab('history');
-    });
-    document.getElementById('btn-download').addEventListener('click', function() {
-        switchTab('download');
-    });
+function selectGame(game,el){
+order.game=game;
+document.querySelectorAll(".option-btn").forEach(b=>b.classList.remove("active"));
+el.classList.add("active");
 
-    function switchTab(tab) {
-        document.getElementById('tab-order').classList.toggle('hidden', tab !== 'order');
-        document.getElementById('tab-history').classList.toggle('hidden', tab !== 'history');
-        document.getElementById('tab-download').classList.toggle('hidden', tab !== 'download');
-        
-        document.querySelectorAll('.tab-btn').forEach(function(btn) {
-            btn.classList.remove('active');
-        });
-        document.getElementById('btn-' + tab).classList.add('active');
-        
-        if (tab === 'history') loadHistory();
-    }
+const list=document.getElementById("pkgList");
+list.innerHTML="";
+data[game].forEach(p=>{
+const d=document.createElement("div");
+d.className="option-btn";
+d.innerHTML=p.name+"<small>LKR "+p.price+"</small>";
+d.onclick=()=>selectPkg(p);
+list.appendChild(d);
+});
+document.getElementById("packages").classList.remove("hidden");
+}
 
-    // Game selection
-    document.querySelectorAll('#game-grid .option-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            const game = this.getAttribute('data-game');
-            setGame(game, this);
-        });
-    });
+function selectPkg(p){
+order.pkg=p.name;
+order.price=p.price;
+document.getElementById("bill").classList.remove("hidden");
+document.getElementById("summary").textContent=
+`ABN TOPUP CENTRE
+-----------------------
+Name: ${name.value}
+Game: ${order.game}
+Package: ${order.pkg}
+Amount: LKR ${order.price}
+-----------------------`;
+}
 
-    function setGame(game, el) {
-        order.game = game;
-        toggleActive(el);
-        
-        const catList = document.getElementById('cat-list');
-        catList.innerHTML = '';
-        
-        if (data[game]) {
-            Object.keys(data[game]).forEach(function(cat) {
-                const btn = document.createElement('div');
-                btn.className = 'option-btn';
-                btn.textContent = cat;
-                btn.addEventListener('click', function() {
-                    setCat(cat, this);
-                });
-                catList.appendChild(btn);
-            });
-            
-            document.getElementById('section-cat').classList.remove('hidden');
-            document.getElementById('section-pkg').classList.add('hidden');
-            document.getElementById('section-bill').classList.add('hidden');
-        }
-    }
+function sendWhatsApp(){
+if(!name.value||!phone.value){
+alert("Fill name & WhatsApp number");
+return;
+}
+const msg=
+`*NEW ORDER - ABN TOPUP CENTRE*
+Name: ${name.value}
+Phone: ${phone.value}
+Game: ${order.game}
+Package: ${order.pkg}
+Amount: LKR ${order.price}`;
+window.open("https://wa.me/94XXXXXXXXX?text="+encodeURIComponent(msg));
+}
+</script>
 
-    function setCat(cat, el) {
-        order.cat = cat;
-        toggleActive(el);
-        
-        const pkgList = document.getElementById('pkg-list');
-        pkgList.innerHTML = '';
-        
-        data[order.game][cat].forEach(function(p) {
-            const btn = document.createElement('div');
-            btn.className = 'option-btn';
-            btn.innerHTML = p.name + '<small>LKR ' + p.price + '</small>';
-            btn.addEventListener('click', function() {
-                setPkg(p.name, p.price, p.info, this);
-            });
-            pkgList.appendChild(btn);
-        });
-        
-        document.getElementById('section-pkg').classList.remove('hidden');
-        document.getElementById('section-bill').classList.add('hidden');
-    }
-
-    function setPkg(name, price, info, el) {
-        order.pkg = name;
-        order.price = price;
-        toggleActive(el);
-        
-        const infoDiv = document.getElementById('product-info');
-        infoDiv.className = 'info-box';
-        infoDiv.innerHTML = '<strong>📦 Package Details:</strong><br>' + info;
-        
-        document.getElementById('qty-section').classList.remove('hidden');
-        calcTotal();
-    }
-
-    // Quantity change
-    document.getElementById('qty').addEventListener('change', calcTotal);
-    document.getElementById('pay-method').addEventListener('change', calcTotal);
-
-    function calcTotal() {
-        const q = parseInt(document.getElementById('qty').value) || 1;
-        order.total = order.price * q;
-        
-        document.getElementById('section-bill').classList.remove('hidden');
-        document.getElementById('bill-content').textContent = 
-            '═══════════════════════════════\n' +
-            '    ABN TOPUP CENTRE SL\n' +
-            '═══════════════════════════════\n' +
-            'Date: ' + new Date().toLocaleDateString() + '\n' +
-            'Customer: ' + (document.getElementById('name').value || 'Guest') + '\n\n' +
-            'Game: ' + order.game + '\n' +
-            'Item: ' + order.pkg + '\n' +
-            'Quantity: ' + q + '\n' +
-            'Payment: ' + document.getElementById('pay-method').value + '\n\n' +
-            '═══════════════════════════════\n' +
-            'TOTAL: LKR ' + order.total + '.00\n' +
-            '═══════════════════════════════';
-    }
-
-    // Send order
-    document.getElementById('send-order-btn').addEventListener('click', function() {
-        const n = document.getElementById('name').value;
-        const p = document.getElementById('phone').value;
-        
-        if (!n || !p) {
-            alert('⚠️ Please fill in your Name and WhatsApp Number!');
-            return;
-        }
-
-        saveToHistory();
-
-        const msg = '*NEW ORDER - ABN TOPUP CENTRE*%0A%0A' +
-            '*CUSTOMER INFO*%0A' +
-            'Name: ' + n + '%0A' +
-            'Contact: ' +
+</body>
+</html>
